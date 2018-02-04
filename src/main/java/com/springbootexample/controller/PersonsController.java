@@ -17,6 +17,11 @@ public class PersonsController {
 	
 	@Autowired
     private PersonRepository personDao;
+	
+	@RequestMapping(value = "/test")
+    public String testDemo(Model model) {
+        return "/base/base";
+    }
  
     @RequestMapping(value = "/delete")
     public String delete(@RequestParam(value="id") long id, Model model) {

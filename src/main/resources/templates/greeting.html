@@ -3,8 +3,10 @@
 <head> 
     <title>Getting Started: Serving Web Content</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
     <p th:text="'Hello, ' + ${name} + '!'" />
+    <div th:replace="index1"> content here </div>
 </body>
 </html>
