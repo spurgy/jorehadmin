@@ -20,6 +20,7 @@ public class PersonsController {
 	
 	@RequestMapping(value = "/test")
     public String testDemo(Model model) {
+		model.addAttribute("view", "content");
         return "/base/base";
     }
  
