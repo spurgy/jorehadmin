@@ -39,6 +39,10 @@ $(function(){
 	$('#inventoryBrandtable').DataTable()
 	$('#inventoryOrderstable').DataTable()
 	//----Inventory Page Tables----
+	
+	//Staff Page Tables
+	$('#staffTable').DataTable()
+	//-------Staff Page Tables-----
 })
 
 //Inventory Functions
@@ -65,3 +69,11 @@ function inventoryAddBtn(value){
 		
 		}
 }
+
+
+//Staff Page function
+function addStaffBtn() {
+	$("#staffAddModal").modal({backdrop: "static"});
+	$("#staffAddModal").modal('show');
+};
+//------Staff Page function------

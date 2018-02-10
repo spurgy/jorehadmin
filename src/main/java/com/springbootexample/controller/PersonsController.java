@@ -18,9 +18,39 @@ public class PersonsController {
 	@Autowired
     private PersonRepository personDao;
 	
-	@RequestMapping(value = "/test")
-    public String testDemo(Model model) {
+	@RequestMapping(value = "/home")
+    public String dashboard(Model model) {
+		model.addAttribute("view", "dashboard");
+        return "/base/base";
+    }
+	
+	@RequestMapping(value = "/appointment")
+    public String appointment(Model model) {
 		model.addAttribute("view", "content");
+        return "/base/base";
+    }
+	
+	@RequestMapping(value = "/services")
+    public String services(Model model) {
+		model.addAttribute("view", "services");
+        return "/base/base";
+    }
+	
+	@RequestMapping(value = "/staff")
+    public String staff(Model model) {
+		model.addAttribute("view", "staff");
+        return "/base/base";
+    }
+	
+	@RequestMapping(value = "/bill")
+    public String bill(Model model) {
+		model.addAttribute("view", "bill");
+        return "/base/base";
+    }
+	
+	@RequestMapping(value = "/inventory")
+    public String inventory(Model model) {
+		model.addAttribute("view", "inventory");
         return "/base/base";
     }
  

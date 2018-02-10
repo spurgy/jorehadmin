@@ -1,75 +1,70 @@
- <!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper">
-	<!-- Content Header (Page header) -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
 	<br/><br/>
-	<section class="content-header">
-	  <h1>
-		Billing
-	  </h1>
-	  <ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li class="active">Bill</li>
-	  </ol>
-	</section>
-	
-	<!-- Main content -->
-	<section class="content">
+    <section class="content-header">
+      <h1>
+        Billing
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Bill</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
 		<div class = "row">
-			<div class = "col-md-4">
-				<div class="box box-primary">
-					<div class="box-header">
-						<div class="row">
-							<div class="col-md-4">
-								<h4>Saved Bills</h4>
-							</div>
-						</div>
-						  <div class="box-tools pull-right">
-							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-						  </div>
-					</div>
-					<!-- /.box-header -->
-					<div class="box-body table-responsive no-padding" >
-						
-					  <table class="table table-bordered table-striped" id="savedBillsTable" style="width: 100%;">
-						<thead id = "thead" >
-							<tr>
-								<th class="col-xs-2">Staff</th>
-								<th class="col-xs-2" id ="styleCenter">Cust. Name</th>
-								<th class="col-xs-1" id ="styleCenter"></th>
-							</tr>
-						</thead>
-						<tbody  style="height:160px;overflow-y:auto;width: 100%;" id = "cpdbody">
-							<tr>
-							  <td class="col-xs-2">183</td>
-							  <td class="col-xs-2">John Doe</td>
-							  <td class="col-xs-1" id ="styleCenter"><button type="button" class="btn btn-link" data-toggle="modal" title="edit" data-target="#modal-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
-							</tr>
-							<tr>
-							  <td>219</td>
-							  <td>Alexander Pierce</td>
-							  <td id ="styleCenter"><button type="button" class="btn btn-link" data-toggle="modal" title="edit" data-target="#modal-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
-							</tr>
-							<tr>
-							  <td>657</td>
-							  <td>Bob Doe</td>
-							  <td id ="styleCenter"><button type="button" class="btn btn-link"  title="edit" data-toggle="modal" data-target="#modal-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
-							</tr>
-							<tr>
-							  <td>219</td>
-							  <td>Alexander Pierce</td>
-							  <td id ="styleCenter"><button type="button" class="btn btn-link" data-toggle="modal" title="edit" data-target="#modal-default"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
-							</tr>
-						</tbody>
-					  </table>
-					</div>
-					<!-- /.box-body -->
-				</div>
-			</div>
-			<div class = "col-md-8">
+			<div class = "col-md-12">
 				<div class="box box-primary">
 					<div class="box-header with-border">
-						<h2 class="box-title"></h2>
-						<h3 class="box-title">New Bill</h3>
+						<div class="row">
+							<div class="col-md-2">
+								<h3 class="box-title">Saved Bills</h3>
+							</div>
+						</div>
+						<div class="box-tools pull-right">
+							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+						</div>
+					</div>
+					<div class="box-body">
+						<div class="btn-group">
+							<button type="button" class="btn btn-default">Bill 1</button>
+							<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">Edit</a></li>
+								<li><a href="#">Delete</a></li>
+							</ul>
+						</div>
+						<div class="btn-group">
+							<button type="button" class="btn btn-default">Bill 2</button>
+							<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#" onclick="edit">Edit</a></li>
+								<li><a href="#" >Delete</a></li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+				<div class="box box-primary">
+					<div class="box-header with-border">
+						<div class="row">
+							<div class="col-md-2">
+								<h3 class="box-title">New Bill</h3>
+							</div>
+						</div>
+						<!--<div class="form-group">
+							<div class="col-md-4">
+								<button type="submit" class="btn btn-primary"data-toggle="modal" data-target="#modal-newMembership">New Membership</button>
+							</div>
+						</div>-->
+						
 						<div class="box-tools pull-right">
 							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 						</div>
@@ -77,43 +72,17 @@
 					<!-- /.box-header -->
 					<div class="box-body">
 						<div class="row">
-							<div class="col-md-6">				
+							<div class="col-md-3">
 								<div class="form-group">
-									  <label>Customer Name :</label>
-									  <input type="text" class="form-control" placeholder="Enter Customer Name"/>
+									  <label>Bill No. :</label>
+									  <input type="number" class="form-control" disabled placeholder="Bill No"/>
 								</div>
-								<!-- phone mask -->
-								<div class="form-group">
-									<label>Phone :</label>
-									<div class="input-group">
-									<div class="input-group-addon">
-										<i class="fa fa-phone"></i>
-									</div>
-									<input type="text" class="form-control" data-inputmask="'mask': '(999) 999-9999'" data-mask="" />
-									</div>
-									<!-- /.input group -->
-								</div>
-								<!-- /.form group -->	
-								<!-- phone mask -->
-								<div class="form-group">
-									<label>Select Staff :</label>
-									<select class="form-control select2" style="width: 100%;">
-									<option selected="selected">Select Staff</option>
-									<option>John</option>
-									<option>Doe</option>
-									<option>Alexander</option>
-									</select>
-								</div>
-								<!-- /.form group -->
-							</div>			
-							
-							<div class="col-md-6">
 								<!-- Date -->
 								<div class="bootstrap-timepicker">
 								  <div class="form-group">
 									<label>Date:</label>
 									<div class="input-group">
-										<input type="text" class="form-control datepicker" id="datepicker"/>
+										<input type="text" class="form-control datepicker" disabled id="datepicker"/>
 									  <div class="input-group-addon">
 										<i class="fa fa-calendar"></i>
 									  </div>
@@ -123,6 +92,35 @@
 								</div>
 								<!-- /.form group -->
 								
+							</div>			
+							
+							<div class="col-md-3">
+								<div class="form-group">
+									  <label>Client Name :</label>
+									  <input type="text" class="form-control" placeholder="Enter Customer Name"/>
+								</div>
+								<!-- phone mask -->
+								<div class="form-group">
+									<label>Phone :</label>
+									<div class="input-group">
+									<div class="input-group-addon">
+										<i class="fa fa-phone"></i>
+									</div>
+									<input type="text" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask/>
+									</div>
+									<!-- /.input group -->
+									<select class="form-control select2" style="width: 100%;">
+										<option selected="selected">Select Gender</option>
+										<option>Male</option>
+										<option>Female</option>
+									</select>
+								</div>
+								<!-- /.form group -->	
+								<!-- phone mask -->
+																
+							</div>
+							<!-- /.col -->
+							<div class="col-md-3">
 								<!-- time Picker -->
 								<div class="bootstrap-timepicker">
 									<div class="form-group">
@@ -137,28 +135,395 @@
 									</div>
 									<!-- /.form group -->
 								</div>
-								
+								<div class="form-group">
+									  <label>Client Address :</label>
+									  <input type="text" class="form-control" placeholder="Enter Street Area"/>
+									  <input type="text" class="form-control" placeholder="Enter City"/>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label>Select Staff :</label>
+									<select class="form-control select2" style="width: 100%;">
+									<option selected="selected">Select Staff</option>
+									<option>John</option>
+									<option>Doe</option>
+									<option>Alexander</option>
+									</select>
+								</div>
+								<!-- /.form group -->
 								<div class="form-group">
 									<label>Membership :</label>
 									<select class="form-control select2" style="width: 100%;">
 									<option selected="selected">No</option>
 									<option>Yes</option>				
 									</select>
+									<button type="submit" class="btn btn-primary pull-right"data-toggle="modal" data-target="#modal-newMembership">New Membership</button>
 								</div>
 							</div>
-												
-							<!-- /.col -->
 						</div>
 					<!-- /.row -->
+						
+						<hr style="border-top: 0.5px dashed #8c8b8b;"/>
+						
+						<div class="row">
+							<div class="col-md-9">
+								<table class="table table-bordered table-hover" id="savedBillsTable" style="width: 100%;">
+									<thead id = "thead" >
+									  <tr>
+										<th class="col-xs-1">S.No</th>
+										<th class="col-xs-4">Service Name</th>
+										<th class="col-xs-1">Qty</th>
+										<th class="col-xs-2">Price</th>
+										<th class="col-xs-1">Discount</th>
+										<th class="col-xs-2">Total</th>
+									  </tr>
+									</thead>
+									<tbody  style="height:160px;overflow-y:auto;width: 100%;" id = "cpdbody">
+										<tr>
+											<td class="col-xs-1">183</td>
+											<td class="col-xs-4">3</td>
+											<td class="col-xs-1">John Doe</td>
+											<td class="col-xs-2">John Doe</td>
+											<td class="col-xs-1">10%</td>
+											<td class="col-xs-2">6578</td>
+										</tr>
+										<tr>
+											<td>219</td>
+											<td>Alexander Pierce</td>
+											<td>Alexander Pierce</td>
+											<td>Alexander Pierce</td>
+											<td>20%</td>
+											<td>1098</td>
+										</tr>
+										<tr>
+											<td>657</td>
+											<td>Bob Doe</td>
+											<td>Alexander Pierce</td>
+											<td>Alexander Pierce</td>
+											<td>5%</td>
+											<td>1098</td>
+										</tr>
+										<tr>
+											<td>219</td>
+											<td>Alexander Pierce</td>
+											<td>Alexander Pierce</td>
+											<td>Alexander Pierce</td>
+											<td>4%</td>
+											<td>1098</td>
+										</tr>
+										<tfoot>
+											<tr>
+											  <th></th>
+											  <th></th>
+											  <th>4</th>
+											  <th></th>
+											  <th></th>
+											  <th>1098</th>
+											</tr>
+										</tfoot>
+									</tbody>
+								</table>
+							</div>
+							<div class="col-md-3">
+									<div class="form-group">
+										<label>Category :</label>
+										<select class="form-control select2 category" id="category" style="width: 100%;">
+											<option selected="selected">Select Category</option>
+											<option>Hair Care</option>
+											<option>Skin Care</option>
+											<option>Bridal Packages</option>
+											<option>Bridegroom Packages</option>
+											<option>Male Facial</option>
+											<option>Pedicure</option>
+											<option>Body Spa</option>
+											<option>Body Care</option>
+											<option>Mens Hair Wash</option>
+											<option>Men's Hair Style</option>
+										</select>
+									</div>
+																	
+									<div class="form-group">
+										<label>Package :</label>
+										<select class="form-control select2 package" id="package" style="width: 100%;">
+											<option selected="selected" >Select Package</option>
+											<option>John</option>
+											<option>Doe</option>
+											<option>Alexander</option>
+										</select>
+									</div>
+									
+									<div class="form-group">
+										<button type="submit" class="btn btn-primary addpackagebtn center-block" >Add</button>
+									</div>
+							</div>
+						</div>
+						<div class = "row">
+							<div class = "col-md-2">
+								<div class="form-group">
+									  <label>GST :</label>
+									  <input type="text" class="form-control" disabled/>
+								</div>
+							</div>
+							<div class = "col-md-2">
+								<div class="form-group">
+									  <label>Discount :</label>
+									  <input type="number" class="form-control" />
+								</div>
+							</div>
+							<div class = "col-md-2">
+								<div class="form-group">
+									  <label>Discount Amount :</label>
+									  <input type="number" class="form-control" />
+								</div>
+							</div>
+							<div class = "col-md-4">
+								<div class="form-group">
+									  <label>GRAND TOTAL :</label>
+									  <input type="number" class="form-control" />
+								</div>
+							</div>
+						</div>
 					</div>
 					<!-- /.box-body -->
 					<div class="box-footer">
-						<button type="submit" class="btn btn-primary pull-right">Make Bill</button>
+						<button type="submit" class="btn btn-primary btn-lg pull-right"data-toggle="modal" data-target="#paymentModal">PAYMENT</button>
 					</div>
 				</div>
 			</div>
+		</div>		
+    </section>
+    <!-- /.content -->
+	
+	<!-- Modals -->
+	<!-- Make Bill Modals -->
+	<div class="modal fade" id="paymentModal">
+	  <div class="modal-dialog modal-lg">
+		<div class="modal-content">
+		  <div class="modal-header text-center">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title">Bill</h4>
+		  </div>
+		  <div class="modal-body">
+			<!--<p>One fine body&hellip;</p>-->
+			<div class="row">
+				<div class="col-md-5">
+					<div class="form-group">
+						  <div class="checkbox">
+							<label>
+							  <input type="checkbox"/>
+							  Card
+							</label>
+						  </div>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="form-group">
+						  <div class="checkbox">
+							<label>
+							  <input type="checkbox"/>
+							  Cash
+							</label>
+						  </div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="form-group">
+						  <label>Enter Cash :</label>
+						  <input type="text" class="form-control"  placeholder="Enter Cash Amount"/>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						  <label>Credit :</label>
+						  <input type="text" class="form-control"  placeholder="Enter Credit Amount"/>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="form-group">
+						  <label>Total :</label>
+						  <input type="text" class="form-control" placeholder="1020"/>
+					</div>
+				</div>
+			</div>
+		 </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary btn-lg">PAY</button>
+		  </div>
 		</div>
-		
-	</section>
-	<!-- /.content -->
- </div>
+		<!-- /.modal-content -->
+	  </div>
+	  <!-- /.modal-dialog -->
+	</div>
+	
+	<!-- new Membership -->
+	<div class="modal fade" id="modal-newMembership">
+	  <div class="modal-dialog modal-lg">
+		<div class="modal-content">
+		  <div class="modal-header text-center">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title">New Membership</h4>
+		  </div>
+		  <div class="modal-body">
+			<!--<p>One fine body&hellip;</p>-->
+				<div class="col-md-12">
+					<!-- Post -->
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								  <label>Client Name :</label>
+								  <input type="text" class="form-control"  placeholder="Enter Client Name"/>
+							</div>
+																	
+							<div class="form-group">
+								<!-- phone mask -->
+								<div class="form-group">
+									<label>Phone :</label>
+
+									<div class="input-group">
+									<div class="input-group-addon">
+										<i class="fa fa-phone"></i>
+									</div>
+									<input type="text" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask=""/>
+									</div>
+									<!-- /.input group -->
+								</div>
+								<!-- /.form group -->
+							</div>
+							
+							<div class="form-group  center-block">
+								<!-- Date -->
+								<div class="bootstrap-timepicker">
+								  <div class="form-group">
+									<label>Date Of Birth:</label>
+									<div class="input-group">
+										<input type="text" class="form-control datepicker" id="datepicker"/>
+									  <div class="input-group-addon">
+										<i class="fa fa-calendar"></i>
+									  </div>
+									</div>
+									<!-- /.input group -->
+								  </div>
+								</div>
+								<!-- /.form group -->
+							</div>
+							
+							<div class="form-group">
+								<label>Gender :</label>
+								<select class="form-control select2" style="width: 100%;">
+									<option selected="selected">Select Gender</option>
+									<option>Male</option>
+									<option>Female</option>
+								</select>
+							</div>
+							
+							<div class="form-group  center-block">
+								  <label>Client Address :</label>
+								  <input type="text" class="form-control"  placeholder="Enter Street Name"/>
+								  <input type="text" class="form-control"  placeholder="Enter Area"/>
+								  <input type="text" class="form-control"  placeholder="Enter City"/>
+							</div>
+							
+						</div>
+						<div class="col-md-4">
+							<div class="form-group  center-block">
+								  <label>Client Email :</label>
+								  <input type="email" class="form-control"  placeholder="Enter Client Email"/>
+							</div>
+							<div class="form-group">
+								  <label>Occupation :</label>
+								  <input type="text" class="form-control"  placeholder="Enter Client Occupation"/>
+							</div>							
+						</div>
+						
+						<div class="col-md-4">
+							<div class="form-group  center-block">	
+								<label>Membership Type :</label>
+								<select class="form-control select2" style="width: 100%;">
+									<option selected="selected" >Select Membership Type</option>
+									<option>Silver</option>
+									<option>Gold</option>
+									<option>Diamond</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label>Duration :</label>
+								<select class="form-control select2" style="width: 100%;">
+									<option selected="selected" >Select Duration</option>
+									<option>1hr 20 mins</option>
+									<option>1 hr 15 mins</option>
+								</select>
+							</div>
+
+							<div class="form-group  center-block">
+								  <label>Price :</label>
+								  <input type="text" class="form-control" disabled placeholder="0.00"/>
+							</div>
+						</div>
+						<div class="col-md-5">
+							<div class="box box-primary">
+								<div class="box-header">
+									<div class="col-md-9">
+									<select class="form-control select2" style="width: 100%;">
+										<option selected="selected" >Select Membership Type</option>
+										<option>Silver</option>
+										<option>Gold</option>
+										<option>Diamond</option>
+									</select>
+									</div>
+								  <div class="box-tools pull-right">
+										<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+								  </div>
+								</div>
+								<!-- /.box-header -->
+								<div class="box-body no-padding">
+								  <table class="table table-hover">
+									<tr>
+									  <th>S.No</th>
+									  <th>Duration</th>
+									  <th>Price</th>
+									</tr>
+									<tr>
+									  <td>1</td>
+									  <td>12 months</td>
+									  <td>1500</td>
+									</tr>
+									<tr>
+									  <td>2</td>
+									  <td>6 months</td>
+									  <td>500</td>
+									  
+									</tr>
+									<tr>
+									  <td>3</td>
+									  <td>9 months</td>
+									  <td>600</td>
+									  
+									</tr>
+									
+								  </table>
+								</div>
+								<!-- /.box-body -->
+							</div>
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.post -->
+				</div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary addServiceSaveBtn" data-dismiss="modal">Purchase</button>
+		  </div>
+		</div>
+		<!-- /.modal-content -->
+	  </div>
+	  <!-- /.modal-dialog -->
+	</div>
+	<!-- /.modals -->
+  </div>

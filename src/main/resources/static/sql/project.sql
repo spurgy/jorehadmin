@@ -4,7 +4,7 @@ CREATE TABLE person (
 person_id BIGINT(20) NOT NULL AUTO_INCREMENT,
 pcity VARCHAR(255) NULL DEFAULT NULL,
 NAME VARCHAR(255) NULL DEFAULT NULL,
-PRIMARY KEY (`id`)
+PRIMARY KEY (`person_id`)
 )
 
 
@@ -19,6 +19,11 @@ CREATE TABLE `role` (
   `updated` DATETIME NULL DEFAULT NULL,
   PRIMARY KEY (`role_id`)
 ) ENGINE=INNODB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+
+INSERT INTO `role` VALUES (1,'ADMIN', CURRENT_TIMESTAMP(),  CURRENT_TIMESTAMP());
+
+INSERT INTO `role` VALUES (2,'USER',  CURRENT_TIMESTAMP(),  CURRENT_TIMESTAMP());
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 
@@ -58,6 +63,11 @@ CREATE TABLE `user_role` (
   CONSTRAINT `FKa68196081fvovjhkek5m97n3y` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-INSERT INTO `role` VALUES (1,'ADMIN');
 
-INSERT INTO `role` VALUES (2,'USER');
+DROP TABLE IF EXISTS `services_category`;
+CREATE TABLE `services_category` ( 
+`services_category_id` INT NOT NULL AUTO_INCREMENT ,
+`services_category_name` VARCHAR(20) NOT NULL ,
+PRIMARY KEY (`services_category_id`)
+) ENGINE = InnoDB;
+

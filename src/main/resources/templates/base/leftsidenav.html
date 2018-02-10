@@ -30,13 +30,13 @@
 		<!-- sidebar menu: : style can be found in sidebar.less -->
 		<ul class="sidebar-menu" data-widget="tree">
 		<li class="header">MAIN NAVIGATION</li>
-		<li class="active">
-			<a href="index2.html">
+		<li>
+			<a href="index2.html" th:href="@{/person/home}">
 				<i class="fa fa-dashboard"></i> <span>Dashboard</span>
 			</a>			
 		</li>
 		<li>
-			<a href="pages/appointment.html">
+			<a href="pages/appointment.html" th:href="@{/person/appointment}">
 				<i class="fa fa-calendar"></i> <span>Apponitment</span>
 				<!--<span class="pull-right-container">
 				<small class="label pull-right bg-green">new</small>
@@ -44,7 +44,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="pages/services.html">
+			<a href="pages/services.html" th:href="@{/person/services}">
 				<i class="fa fa-calendar"></i> <span>Services</span>
 				<!--<span class="pull-right-container">
 				<small class="label pull-right bg-green">new</small>
@@ -52,7 +52,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="pages/staff_work_status.html">
+			<a href="pages/staff_work_status.html" th:href="@{/person/home}">
 				<i class="fa fa-cut"></i> <span>Staff Work Status</span>
 				<!--<span class="pull-right-container">
 				<small class="label pull-right bg-green">new</small>
@@ -60,7 +60,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="pages/staff.html">
+			<a href="pages/staff.html" th:href="@{/person/staff}">
 				<i class="fa fa-users"></i> <span>Staff</span>
 				<!--<span class="pull-right-container">
 				<small class="label pull-right bg-green">new</small>
@@ -68,7 +68,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="pages/bill.html">
+			<a href="/bill" th:href="@{/person/bill}">
 				<i class="fa fa-file"></i> <span>Bill</span>
 				<!--<span class="pull-right-container">
 				<small class="label pull-right bg-green">new</small>
@@ -76,7 +76,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="pages/inventory.html">
+			<a href="pages/inventory.html" th:href="@{/person/inventory}">
 				<i class="fa fa-archive"></i> <span>Inventory</span>
 				<!--<span class="pull-right-container">
 				<small class="label pull-right bg-green">new</small>
@@ -84,7 +84,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="pages/inventory.html">
+			<a href="pages/inventory.html" th:href="@{/person/home}">
 				<i class="fa fa-cart-arrow-down"></i> <span>Petty Expences</span>
 				<!--<span class="pull-right-container">
 				<small class="label pull-right bg-green">new</small>
@@ -92,7 +92,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="pages/setup.html">
+			<a href="pages/setup.html" th:href="@{/person/home}">
 				<i class="fa fa-cogs"></i> <span>Setup</span>
 				<!--<span class="pull-right-container">
 				<small class="label pull-right bg-green">new</small>

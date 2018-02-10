@@ -1,0 +1,562 @@
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" >
+    <!-- Content Header (Page header) -->
+	<br/><br/>
+    <section class="content-header">
+      <h1>
+        Services
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="../index2.html"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Services</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+		<div class = "row">
+			<div class = "col-md-6">
+				<div class="box box-primary">
+					<div class="box-header">
+						<div class="row">
+							<div class="col-md-6">
+								<h2></h2>
+								<div class="form-group">
+									<select class="form-control select2 servicesAddCPDdropdown" style="width: 100%;">
+										<option selected="selected">Select</option>
+										<option>Category</option>
+										<option>Package</option>
+										<option>Deals and Discounts</option>
+									</select>
+								</div>
+							</div>
+							
+						</div>
+						  <div class="box-tools pull-right">
+							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+						  </div>
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body " >
+						<div class = "table-responsive no-padding">
+							
+							<table class="table table-bordered table-hover" id="cpdtable" style="width: 100%;">
+								<thead id = "thead" >
+								 <tr>
+								  <th class="col-xs-3">Name</th>
+								  <th class="col-xs-3">No. Services</th>
+								  <th class="col-xs-3"></th>
+								 </tr>
+								</thead>
+								<tbody  style="height:160px;overflow-y:auto;width: 100%;" id = "cpdbody">	
+									<tr>
+									  <td class="col-xs-3">John Doe</td>
+									  <td class="col-xs-3">11</td>
+									  <td class="col-xs-3"><button type="submit" onclick="servicesCatAddService()" value="addService" class="btn btn-primary btn-sm "><small>Add Service</small></button></td>
+									</tr>
+									<tr>
+									  <td>Alexander Pierce</td>
+									  <td>20</td>
+									  <td><button type="submit" onclick="servicesCatAddService()" value="addService" class="btn btn-primary btn-sm "><small>Add Service</small></button></td>
+									</tr>
+									<tr>	
+									  <td>Bob Doe</td>
+									  <td>7</td>
+									  <td><button type="submit" onclick="servicesCatAddService()" value="addService" class="btn btn-primary btn-sm "><small>Add Service</small></button></td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary btn-lg pull-right servicesAddCpdBtn" onclick="servicesAddBtn(this.value)" disabled style = "width: 50px;height: 50px;padding: 10px 16px;font-size: 18px;line-height: 1.33;border-radius: 25px;" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus"></i></button>
+							</div>
+						</div>
+					</div>
+					<!-- /.box-body -->
+				</div>
+			</div>
+			<div class = "col-md-6">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+						<h3 class="box-title">Services</h3>
+
+						<div class="box-tools pull-right">
+							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+						</div>
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Category :</label>
+									<select class="form-control select2 category" id="category" style="width: 100%;">
+										<option selected="selected">Select Category</option>
+										<option>Hair Care</option>
+										<option>Skin Care</option>
+										<option>Bridal Packages</option>
+										<option>Bridegroom Packages</option>
+										<option>Male Facial</option>
+										<option>Pedicure</option>
+										<option>Body Spa</option>
+										<option>Body Care</option>
+										<option>Mens Hair Wash</option>
+										<option>Men's Hair Style</option>
+									</select>
+								</div>
+								
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary addservicebtn center-block" disabled>Add</button>
+								</div>
+								
+								<div class="form-group">
+									<label>Package :</label>
+									<select class="form-control select2 package" id="package" style="width: 100%;">
+										<option selected="selected" >Select Package</option>
+										<option>John</option>
+										<option>Doe</option>
+										<option>Alexander</option>
+									</select>
+								</div>
+								
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary addpackagebtn center-block" disabled>Add</button>
+								</div>
+							</div>
+							<div class="col-md-6">
+								
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Deals and Discounts :</label>
+									<select class="form-control select2 Dd" id="Dd" style="width: 100%;">
+										<option selected="selected" >Select Deal</option>
+										<option>John</option>
+										<option>Doe</option>
+										<option>Alexander</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary addDdbtn center-block" disabled>Add</button>
+								</div>
+								<!-- /.form group -->
+							</div>
+							<!-- /.col -->
+						</div>
+						<!-- /.row -->
+					</div>
+					<!-- /.box-body -->
+					<div class="box-footer">
+						<button type="submit" class="btn btn-info pull-right reset">Reset</button>
+					</div>
+				</div>
+			</div>
+			<!-- /.col -->	
+		</div>
+	  <div class="row">
+        <div class="col-xs-12">
+          <div class="box box-primary">
+            <div class="box-header">
+              <h3 class="box-title"></h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="nav-tabs-custom">
+							<ul class="nav nav-tabs">
+								<li class="active"><a href="#services" data-toggle="tab">Services</a></li>
+								<li><a href="#packages" data-toggle="tab">Packages</a></li>
+								<li><a href="#Dd" data-toggle="tab">Deals and Discounts</a></li>
+							</ul>
+							<div class="tab-content">
+								<div class="active tab-pane" id="services">
+									<!-- Post -->
+									<div class = "row">
+										<div class="col-md-3">
+											<select class="form-control select2 servicesCatDropdown" style="width: 100%;">
+												<option selected="selected" >Select Category</option>
+												<option>John</option>
+												<option>Doe</option>
+												<option>Alexander</option>
+											</select>
+											<div class="form-group">
+											</div>
+										</div>
+									</div>
+									<div class="table-responsive no-padding">
+										<table id="example1" class="table table-bordered table-hover">
+											<thead>
+											<tr>
+											  <th>Name</th>
+											  <th>Duration</th>
+											  <th>Price</th>
+											</tr>
+											</thead>
+											<tbody>
+												<tr>
+												  <td>Trident</td>
+												  <td> 4</td>
+												  <td>300</td>
+												</tr>
+												<tr>
+												  <td>Trident</td>
+												  <td>5</td>
+												  <td>200</td>
+												</tr>
+												<tr>
+												  <td>Trident</td>
+												  <td>5</td>
+												  <td>400</td>
+												</tr>
+												<tr>
+												  <td>Trident</td>
+												  <td>6</td>
+												  <td>100</td>
+												</tr>
+												<tr>
+												  <td>Trident</td>
+												  <td>7</td>
+												  <td>500</td>
+												</tr>
+												<tr>
+												  <td>Trident</td>
+												  <td>6</td>
+												  <td>250</td>
+												</tr>
+												<tr>
+												  <td>Gecko</td>
+												  <td>1</td>
+												  <td>430</td>
+												</tr>
+												
+											</tbody>
+											<tfoot>
+												<tr>
+												  <th></th>
+												  <th>Browser</th>
+												  <th></th>
+												</tr>
+											</tfoot>
+										</table>
+										
+									</div>
+								</div>	
+								<div class="tab-pane" id="packages">
+									<div class = "row">
+										<div class="col-md-3">
+											<select class="form-control select2 servicesPacDropdown" style="width: 100%;">
+												<option selected="selected" >Select Package</option>
+												<option>John</option>
+												<option>Doe</option>
+												<option>Alexander</option>
+											</select>
+											<div class="form-group">
+											</div>
+										</div>
+									</div>
+									<div class="table-responsive no-padding">
+											<table id="servicesPackagesTable" class="table table-bordered table-hover">
+												<thead>
+												<tr>
+												  <th>Name</th>
+												  <th>No.Services</th>
+												  <th>Price</th>
+												  <th></th>
+												</tr>
+												</thead>
+												<tbody>
+												<tr>
+												  <td>Trident</td>
+												  <td> 4</td>
+												  <td>550</td>
+												  <td><button type="submit" onclick="servicesCatAddService()" value="addService" onclick="servicesCatAddService()" style="align:center;" class="btn btn-primary btn-sm "><small>Add Service</small></button></td>
+												</tr>
+												<tr>
+												  <td>Trident</td>
+												  <td>5</td>
+												  <td>550</td>
+												  <td><button type="submit" onclick="servicesCatAddService()" value="addService" class="btn btn-primary btn-sm "><small>Add Service</small></button></td>
+												</tr>
+												<tr>
+												  <td>Trident</td>
+												  <td>5</td>
+												  <td>550</td>
+												  <td><button type="submit" onclick="servicesCatAddService()" value="addService" class="btn btn-primary btn-sm "><small>Add Service</small></button></td>
+												</tr>
+												<tr>
+												  <td>Trident</td>
+												  <td>6</td>
+												  <td>550</td>
+												  <td><button type="submit" onclick="servicesCatAddService()" value="addService" class="btn btn-primary btn-sm "><small>Add Service</small></button></td>
+												</tr>
+												<tr>
+												  <td>Trident</td>
+												  <td>7</td>
+												  <td>550</td>
+												  <td><button type="submit" onclick="servicesCatAddService()" value="addService" class="btn btn-primary btn-sm "><small>Add Service</small></button></td>
+												</tr>
+												<tr>
+												  <td>Trident</td>
+												  <td>6</td>
+												  <td>550</td>
+												  <td><button type="submit" onclick="servicesCatAddService()" value="addService" class="btn btn-primary btn-sm "><small>Add Service</small></button></td>
+												</tr>
+												<tr>
+												  <td>Gecko</td>
+												  <td>1</td>
+												  <td>550</td>
+												  <td><button type="submit" onclick="servicesCatAddService()" value="addService" class="btn btn-primary btn-sm "><small>Add Service</small></button></td>
+												</tr>
+												
+												</tbody>
+												<tfoot>
+												<tr>
+												  <th></th>
+												  <th>Browser</th>
+												  <th></th>
+												</tr>
+												</tfoot>
+											 </table>
+									</div>
+								</div>	
+								<div class="tab-pane" id="Dd">
+									<div class = "row">
+										<div class="col-md-3">
+											<select class="form-control select2 servicesDbDropdown" style="width: 100%;">
+												<option selected="selected" >Select Deals and Discounts</option>
+												<option>John</option>
+												<option>Doe</option>
+												<option>Alexander</option>
+											</select>
+											<div class="form-group">
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  
+	<!--- Modals  --->
+	<!-- Add CPD Modal -->
+	<div class="modal fade" id="servicesAddCPDmodal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header text-center">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					  <span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="servicesaddCPDmodalTitle"></h4>
+				</div>
+				<div class="modal-body">
+					<!--<p>One fine body&hellip;</p>-->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group  center-block">
+								  <label id="servicesaddCPDmodalLabel"></label>
+								  <input type="text" class="form-control" id="servicesaddCPDmodalinput"/>
+							</div>
+						</div>
+						<!-- /.col -->
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default pull-left servicesaddCPDmodalDeleteBtn" data-dismiss="modal" >Delete</button>
+					<button type="button" class="btn btn-default " data-dismiss="modal" >Close</button>
+					<button type="button" class="btn btn-primary servicesaddCPDmodalSaveBtn" id="add-row">Save</button>
+				</div>
+			</div>
+		<!-- /.modal-content -->
+		</div>
+          <!-- /.modal-dialog -->
+	</div>
+	
+	<!-- Add Service Modal -->
+	<div class="modal fade" id="modal-addService">
+	  <div class="modal-dialog modal-lg">
+		<div class="modal-content">
+		  <div class="modal-header text-center">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title">Add Service</h4>
+		  </div>
+		  <div class="modal-body">
+			<!--<p>One fine body&hellip;</p>-->
+				<div class="col-md-12">
+					<div class="nav-tabs-custom">
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#details" data-toggle="tab">Details</a></li>
+							<li><a href="#staff" data-toggle="tab">Staff</a></li>
+							<li><a href="#settings" data-toggle="tab">Settings</a></li>
+						</ul>
+						<div class="tab-content">
+							<div class="active tab-pane" id="details">
+								<!-- Post -->
+								<div class="row">
+									<div class="col-md-4">
+										<div class="form-group  center-block">
+											  <label>Category Name :</label>
+											  <input type="text" class="form-control" disabled placeholder="Enter Category Name"/>
+										</div>
+										
+										<div class="form-group  center-block">
+											  <label>Service Name :</label>
+											  <input type="text" class="form-control" placeholder="Enter Service Name"/>
+										</div>
+										
+										<div class="form-group">
+											<label>Available For :</label>
+											<select class="form-control select2" style="width: 100%;">
+												<option>Males Only</option>
+												<option>Females Only</option>
+												<option selected="selected" >Everyone</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Duration :</label>
+											<select class="form-control select2" style="width: 100%;">
+												<option selected="selected" >Select Duration</option>
+												<option>1hr 20 mins</option>
+												<option>1 hr 15 mins</option>
+											</select>
+										</div>
+										
+										<div class="form-group  center-block">
+											  <label>Price :</label>
+											  <input type="text" class="form-control" placeholder="0.00"/>
+										</div>
+										
+										
+									</div>
+									
+									<div class="col-md-4">
+										<div class="form-group  center-block">
+											  <label>Loyalty Points :</label>
+											  
+												<select class="form-control select2" style="width: 100%;">
+													<option selected="selected" >Select Membership Type</option>
+													<option>Silver</option>
+													<option>Gold</option>
+													<option>Diamond</option>
+												</select>
+											  <input type="number" class="form-control" placeholder="Enter Loyalty Points eg. 10">
+										</div>
+										<button type="button" class="btn btn-primary center-block">Add</button>
+									</div>
+									<div class="col-md-5">
+										<div class="box box-primary">
+											<div class="box-header">
+											  <h3 class="box-title">Loyalty Points</h3>
+
+											  <div class="box-tools pull-right">
+													<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+											  </div>
+											</div>
+											<!-- /.box-header -->
+											<div class="box-body no-padding">
+											  <table class="table table-hover">
+												<tr>
+												  <th>S.No</th>
+												  <th>Name</th>
+												  <th>Points</th>
+												  <th></th>                  
+												</tr>
+												<tr>
+												  <td>1</td>
+												  <td>Diamond</td>
+												  <td>11</td>
+												  <td><button type="button" class="btn btn-link" data-toggle="tooltip" title="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
+												  <td><button type="button" class="btn btn-link" data-toggle="tooltip" title="remove"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+												</tr>
+												<tr>
+												  <td>2</td>
+												  <td>Silver</td>
+												  <td>20</td>
+												  <td><button type="button" class="btn btn-link" data-toggle="tooltip" title="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
+												  <td><button type="button" class="btn btn-link" data-toggle="tooltip" title="remove"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+												</tr>
+												<tr>
+												  <td>3</td>
+												  <td>Gold</td>
+												  <td>14</td>
+												  <td><button type="button" class="btn btn-link" data-toggle="tooltip" title="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
+												  <td><button type="button" class="btn btn-link" data-toggle="tooltip" title="remove"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+												</tr>
+											  </table>
+											</div>
+											<!-- /.box-body -->
+										</div>
+									</div>
+									<!-- /.col -->
+								</div>
+								<!-- /.post -->
+							</div>
+							<!-- /.tab-pane -->
+							<div class="tab-pane" id="staff">
+								
+							</div>
+							<!-- /.tab-pane -->
+							<div class="tab-pane" id="settings">
+								
+							</div>
+							<!-- /.tab-pane -->
+						</div>
+						<!-- /.tab-content -->
+					</div>
+					<!-- /.nav-tabs-custom -->
+				</div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary addServiceSaveBtn" data-dismiss="modal">Save</button>
+		  </div>
+		</div>
+		<!-- /.modal-content -->
+	  </div>
+	  <!-- /.modal-dialog -->
+	</div>
+	
+	
+	
+	<!-- Add DD Service Modal -->
+	<div class="modal fade" id="modal-addDDService">
+	  <div class="modal-dialog modal-lg">
+		<div class="modal-content">
+		  <div class="modal-header text-center">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title">Add Service</h4>
+		  </div>
+		  <div class="modal-body">
+			<!--<p>One fine body&hellip;</p>-->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group  center-block">
+						  <label>Service Name :</label>
+						  <input type="text" class="form-control ModalServiceInput" placeholder="Enter Service Name"/>
+					</div>
+				</div>
+				<!-- /.col -->
+			</div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary addServiceSaveBtn" data-dismiss="modal">Save</button>
+		  </div>
+		</div>
+		<!-- /.modal-content -->
+	  </div>
+	  <!-- /.modal-dialog -->
+	</div>
