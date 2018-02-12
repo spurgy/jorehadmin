@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -35,9 +36,8 @@ public class Staff extends TimeStampClass{
 	@Column(name = "staff_phone")
     private String phoneNumber;
     
-	@Column(name = "staff_designation")
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "desig_id")
+	@ManyToOne
+	@JoinColumn(name="staff_designation_id")
     private Designation designation;
     
 	@Column(name = "staff_fathername")
@@ -68,7 +68,7 @@ public class Staff extends TimeStampClass{
     private double salary;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinTable(name = "staff_role_relation", joinColumns = @JoinColumn(name = "staff_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+	@JoinTable(name = "staff_user_role_relation", joinColumns = @JoinColumn(name = "staff_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private User user;
     
     public Long getId() {

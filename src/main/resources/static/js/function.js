@@ -45,7 +45,18 @@ $(function(){
 	
 	
 	//Staff Page Tables
-	$('#staffTable').DataTable()
+	$('#staffTable').DataTable({
+		"sAjaxSource": "/util/getStaff",
+		"sAjaxDataProp": "",
+		"order": [[ 0, "asc" ]],
+		"aoColumns": [
+		      { "mData": "id"},
+	          { "mData": "name" },
+			  { "mData": "phoneNumber" },
+			  { "mData": "email" },
+			  { "mData": "salary" }
+		]
+	});
 	//-------Staff Page Tables-----
 	// Staff Table Load designations
 	$.post( "/util/getDesignations", function( data ) {

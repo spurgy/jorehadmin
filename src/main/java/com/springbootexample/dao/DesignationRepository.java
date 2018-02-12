@@ -6,4 +6,5 @@ import com.springbootexample.model.Designation;
 
 public interface DesignationRepository extends CrudRepository<Designation, Integer>{
 	Designation findByName(String name);
+	Designation findById(Integer id);
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.springbootexample.dao.DesignationRepository;
 import com.springbootexample.dao.RoleRepository;
+import com.springbootexample.dao.StaffRepository;
 import com.springbootexample.model.Role;
 import com.springbootexample.model.Staff;
 import com.springbootexample.model.User;
@@ -24,6 +25,8 @@ public class AdminServiceImpl implements AdminService{
     private RoleRepository roleRepository;
 	@Autowired
     private DesignationRepository designationRepository;
+	@Autowired
+    private StaffRepository staffrepository;
 	
 	public void saveStaffDetails(StaffDetails staffDetails) {
 		Staff staff = new Staff();
@@ -32,7 +35,7 @@ public class AdminServiceImpl implements AdminService{
 		staff.setCommunicationStreet(staffDetails.getCommunicationAddress().getStreetName());
 		staff.setDateOfBirth(staffDetails.getStaffDateOfBirth());
 		staff.setDateOfJoining(staffDetails.getStaffJoiningDate());
-		staff.setDesignation(designationRepository.findByName("Receptionist"));
+		staff.setDesignation(designationRepository.findById(staffDetails.getStaffDesignation()));
 		staff.setEmail(staffDetails.getStaffEmail());
 		staff.setFatherName(staffDetails.getStaffFatherName());
 		staff.setName(staffDetails.getStaffLastName()+staffDetails.getStaffFirstName());
@@ -48,6 +51,11 @@ public class AdminServiceImpl implements AdminService{
 		user.setName(staffDetails.getStaffFirstName());
 		user.setRoles(new HashSet<Role>(Arrays.asList(roleRepository.findByRole("USER"))));
 		user.setPassword(bCryptPasswordEncoder.encode("Test@123"));
+//		user.setCreated();
+//		user.setUpdated();
 		staff.setUser(user);
+//		staff.setCreated(new Date());
+//		staff.setUpdated(new Date());
+		staffrepository.save(staff);
 	}
 }

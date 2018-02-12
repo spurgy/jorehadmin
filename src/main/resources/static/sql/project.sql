@@ -88,16 +88,27 @@ CREATE TABLE `staff` (
 `staff_p_area` VARCHAR(30) NOT NULL ,
 `staff_p_city` VARCHAR(30) NOT NULL ,
 `staff_salary` DOUBLE NOT NULL ,
-`created` DATETIME NOT NULL ,
-`updated` DATETIME NOT NULL ,
+`created` DATETIME NULL DEFAULT NULL,
+`updated` DATETIME NULL DEFAULT NULL,
 PRIMARY KEY (`staff_id`)) ENGINE = InnoDB;
 
-DROP TABLE IF EXISTS `staff_role_relation`;
+DROP TABLE IF EXISTS `designation`;
+CREATE TABLE `designation` (
+`desig_id` INT NOT NULL AUTO_INCREMENT ,
+`desig_name` VARCHAR(64) NOT NULL ,
+`created` DATETIME NOT NULL ,
+`updated` DATETIME NOT NULL ,
+PRIMARY KEY (`desig_id`)) ENGINE = InnoDB;
+
+INSERT INTO designation (desig_id,desig_name,created,updated)
+VALUES(1,"Manager", CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP()),(2,"Receptionist",CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
+
+DROP TABLE IF EXISTS `staff_user_role_relation`;
 CREATE TABLE `staff_role_relation` (
 `user_id` INT NOT NULL ,
 `staff_id` INT NOT NULL,
-`created` DATETIME NOT NULL ,
-`updated` DATETIME NOT NULL ) ENGINE = InnoDB;
+`created` DATETIME NULL DEFAULT NULL ,
+`updated` DATETIME NULL DEFAULT NULL) ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS `service`;
 CREATE TABLE `service` (
@@ -182,13 +193,3 @@ CREATE TABLE `apointment` (
 `updated` DATETIME NOT NULL ,
 PRIMARY KEY (`apointment_id`)) ENGINE = InnoDB;
 
-DROP TABLE IF EXISTS `designation`;
-CREATE TABLE `designation` (
-`desig_id` INT NOT NULL AUTO_INCREMENT ,
-`desig_name` VARCHAR(64) NOT NULL ,
-`created` DATETIME NOT NULL ,
-`updated` DATETIME NOT NULL ,
-PRIMARY KEY (`desig_id`)) ENGINE = InnoDB;
-
-INSERT INTO designation (desig_id,desig_name,created,updated)
-VALUES(1,"Manager", CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP()),(2,"Receptionist",CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
