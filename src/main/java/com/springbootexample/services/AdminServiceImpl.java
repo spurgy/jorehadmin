@@ -43,7 +43,7 @@ public class AdminServiceImpl implements AdminService{
 		staff.setPermanentCity(staffDetails.getPermanentAddress().getCity());
 		staff.setPermanentStreet(staffDetails.getPermanentAddress().getStreetName());
 		staff.setPhoneNumber(staffDetails.getStaffPhoneNumber());
-		staff.setSalary(200.0);
+		staff.setSalary(2000.0);
 		User user = new User();
 		user.setActive(1);
 		user.setEmail(staffDetails.getStaffEmail());

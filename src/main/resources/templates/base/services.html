@@ -15,11 +15,11 @@
     <!-- Main content -->
     <section class="content">
 		<div class = "row">
-			<div class = "col-md-6">
+			<div class = "col-md-12">
 				<div class="box box-primary">
 					<div class="box-header">
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-3">
 								<h2></h2>
 								<div class="form-group">
 									<select class="form-control select2 servicesAddCPDdropdown" style="width: 100%;">
@@ -40,12 +40,12 @@
 					<div class="box-body " >
 						<div class = "table-responsive no-padding">
 							
-							<table class="table table-bordered table-hover" id="cpdtable" style="width: 100%;">
+							<table class="table table-bordered table-hover servicesCPDtable" style="width: 100%;">
 								<thead id = "thead" >
 								 <tr>
-								  <th class="col-xs-3">Name</th>
-								  <th class="col-xs-3">No. Services</th>
-								  <th class="col-xs-3"></th>
+								  <th class="col-xs-3 center">Name</th>
+								  <th class="col-xs-3 center">No. Services</th>
+								  <th class="col-xs-3 center"></th>
 								 </tr>
 								</thead>
 								<tbody  style="height:160px;overflow-y:auto;width: 100%;" id = "cpdbody">	
@@ -74,83 +74,7 @@
 					<!-- /.box-body -->
 				</div>
 			</div>
-			<div class = "col-md-6">
-				<div class="box box-primary">
-					<div class="box-header with-border">
-						<h3 class="box-title">Services</h3>
 
-						<div class="box-tools pull-right">
-							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-						</div>
-					</div>
-					<!-- /.box-header -->
-					<div class="box-body">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Category :</label>
-									<select class="form-control select2 category" id="category" style="width: 100%;">
-										<option selected="selected">Select Category</option>
-										<option>Hair Care</option>
-										<option>Skin Care</option>
-										<option>Bridal Packages</option>
-										<option>Bridegroom Packages</option>
-										<option>Male Facial</option>
-										<option>Pedicure</option>
-										<option>Body Spa</option>
-										<option>Body Care</option>
-										<option>Mens Hair Wash</option>
-										<option>Men's Hair Style</option>
-									</select>
-								</div>
-								
-								<div class="form-group">
-									<button type="submit" class="btn btn-primary addservicebtn center-block" disabled>Add</button>
-								</div>
-								
-								<div class="form-group">
-									<label>Package :</label>
-									<select class="form-control select2 package" id="package" style="width: 100%;">
-										<option selected="selected" >Select Package</option>
-										<option>John</option>
-										<option>Doe</option>
-										<option>Alexander</option>
-									</select>
-								</div>
-								
-								<div class="form-group">
-									<button type="submit" class="btn btn-primary addpackagebtn center-block" disabled>Add</button>
-								</div>
-							</div>
-							<div class="col-md-6">
-								
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Deals and Discounts :</label>
-									<select class="form-control select2 Dd" id="Dd" style="width: 100%;">
-										<option selected="selected" >Select Deal</option>
-										<option>John</option>
-										<option>Doe</option>
-										<option>Alexander</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<button type="submit" class="btn btn-primary addDdbtn center-block" disabled>Add</button>
-								</div>
-								<!-- /.form group -->
-							</div>
-							<!-- /.col -->
-						</div>
-						<!-- /.row -->
-					</div>
-					<!-- /.box-body -->
-					<div class="box-footer">
-						<button type="submit" class="btn btn-info pull-right reset">Reset</button>
-					</div>
-				</div>
-			</div>
-			<!-- /.col -->	
 		</div>
 	  <div class="row">
         <div class="col-xs-12">

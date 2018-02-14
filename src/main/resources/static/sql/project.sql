@@ -104,7 +104,7 @@ INSERT INTO designation (desig_id,desig_name,created,updated)
 VALUES(1,"Manager", CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP()),(2,"Receptionist",CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP());
 
 DROP TABLE IF EXISTS `staff_user_role_relation`;
-CREATE TABLE `staff_role_relation` (
+CREATE TABLE `staff_user_role_relation` (
 `user_id` INT NOT NULL ,
 `staff_id` INT NOT NULL,
 `created` DATETIME NULL DEFAULT NULL ,

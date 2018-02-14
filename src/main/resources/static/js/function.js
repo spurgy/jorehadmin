@@ -45,18 +45,24 @@ $(function(){
 	
 	
 	//Staff Page Tables
-	$('#staffTable').DataTable({
+	var datatable = $('#staffTable').DataTable({
 		"sAjaxSource": "/util/getStaff",
 		"sAjaxDataProp": "",
+		"asStripeClasses": [ 'strip1', 'strip2', 'strip3', 'strip4', 'strip5' ],
 		"order": [[ 0, "asc" ]],
 		"aoColumns": [
 		      { "mData": "id"},
 	          { "mData": "name" },
 			  { "mData": "phoneNumber" },
 			  { "mData": "email" },
-			  { "mData": "salary" }
+			  { "mData": "salary"}
 		]
 	});
+	
+	/*$("#staffTable_wrapper tbody tr").on('click', function(event) {
+		var id = datatable.fnGetData(this)[0];
+		alert(id);
+		});*/
 	//-------Staff Page Tables-----
 	// Staff Table Load designations
 	$.post( "/util/getDesignations", function( data ) {
@@ -95,6 +101,9 @@ function inventoryAddBtn(value){
 //service page functions
 
 $(function(){
+	
+	$(".servicesCPDtable").DataTable()
+	
 	//cpd dropdown function
 	$(".servicesAddCPDdropdown").change(function(){
 		console.log(this.value);
@@ -158,6 +167,10 @@ function addStaffBtn() {
 
 $(".addStaffSaveBtn").click(function() {
 	$("#StaffForm").submit();
+});
+
+$(".strip1").click(function() {
+	console.log(this);
 });
 
 //------Staff Page function------
