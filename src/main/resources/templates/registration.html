@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="../static/css/AdminLTE.min.css" th:href="@{/css/AdminLTE.min.css}">
 	<!-- iCheck -->
 	<link rel="stylesheet" href="../static/css/plugins/iCheck/blue.css" th:href="@{/css/plugins/iCheck/blue.css}">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   	<!-- jQuery 3 -->
 	<script href="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
 	<!-- Bootstrap 3.3.7 -->
@@ -34,8 +36,8 @@
 
 <body class="hold-transition login-page">
 	
-	<div class="login-box" style="position: absolute; left: 0; right:0; top:0; bottom:0;">
-	  <div class="login-logo">
+	<div class="register-box" style="position: absolute; left: 0; right:0; top:0; bottom:0;">
+	  <div class="register-logo">
 	    <b>Registration</b>
 	  </div>
 	  <!-- /.login-logo -->
@@ -43,7 +45,6 @@
 	  	<span th:utext="${successMessage}"></span>
 	    <p class="login-box-msg">Sign up</p>
 
-	    
 	    <form autocomplete="off" action="#" th:action="@{/registration}"
 					th:object="${user}" method="post" role="form">
 		  	<div class="form-group has-feedback">
@@ -93,67 +94,4 @@
 	<!-- /.login-box -->
 	
 </body>
-
-
-<!-- <body>
-	<form th:action="@{/}" method="get">
-		<button class="btn btn-md btn-warning btn-block" type="Submit">Go To Login Page</button>
-	</form>	
-	
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-				<form autocomplete="off" action="#" th:action="@{/registration}"
-					th:object="${user}" method="post" class="form-horizontal"
-					role="form">
-					<h2>Registration Form</h2>
-					<div class="form-group">
-						<div class="col-sm-9">
-						<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
-								class="validation-message"></label>
-						<input type="text" th:field="*{name}" placeholder="Name"
-								class="form-control" /> 
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="col-sm-9">
-						<label	th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
-								class="validation-message"></label>
-							<input type="text" th:field="*{lastName}"
-								placeholder="Last Name" class="form-control" /> 
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-9">
-							<input type="text" th:field="*{email}" placeholder="Email"
-								class="form-control" /> <label
-								th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
-								class="validation-message"></label>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-9">
-							<input type="password" th:field="*{password}"
-								placeholder="Password" class="form-control" /> <label
-								th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
-								class="validation-message"></label>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="col-sm-9">
-							<button type="submit" class="btn btn-primary btn-block">Register User</button>
-						</div>
-					</div>
-					
-					<span th:utext="${successMessage}"></span>
-					
-					
-				</form>
-			</div>
-		</div>
-	</div>
-
-</body>-->
 </html>

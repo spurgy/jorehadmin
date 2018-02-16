@@ -6,7 +6,7 @@
 	<section class="content-header">
 		<h1>Staff</h1>
 		<ol class="breadcrumb">
-			<li><a href="../index2.html"><i class="fa fa-dashboard"></i>
+			<li><a href="../index2.html" th:href="@{/person/home}"><i class="fa fa-dashboard"></i>
 					Home</a></li>
 			<li>staff</li>
 		</ol>
@@ -22,8 +22,7 @@
 							<div class="col-md-2">
 								<h1></h1>
 								<div class="form-group">
-									<button type="submit" class="btn btn-primary"
-										onclick=addStaffBtn();>New Staff</button>
+									<button type="submit" class="btn btn-primary addStaffBtn">New Staff</button>
 								</div>
 							</div>
 
@@ -60,7 +59,7 @@
 	<!-- /.content -->
 
 	<!--Add Staff Modal -->
-	<div class="modal fade" id="staffAddModal">
+	<div class="modal fade" id="staffAddModaler">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header text-center">
@@ -80,112 +79,22 @@
 								<li><a href="#salary" data-toggle="tab">Salary</a></li>
 							</ul>
 							<div class="tab-content">
-							<form action="/admin/staff" method="POST" id="StaffForm">
-								<div class="active tab-pane" id="details">
-									<!-- Post -->
-									<div class="row">
-										<div class="col-md-4">
-											<div class="form-group  center-block">
-												<label>Staff Id :</label> <input type="text"
-													class="form-control" disabled placeholder="Enter Staff Id">
-											</div>
-											<div class="form-group  center-block">
-												<label>First Name :</label> <input type="text" name="staffFirstName"
-													class="form-control" placeholder="Enter Staff First Name">
-											</div>
-											<div class="form-group  center-block">
-												<label>Last Name :</label> <input type="text" name="staffLastName"
-													class="form-control" placeholder="Enter Staff Last Name">
-											</div>
-											<div class="form-group  center-block">
-												<label>Fathers Name :</label> <input type="text" name="staffFatherName"
-													class="form-control" placeholder="Enter Fathers Name">
-											</div>
-											<!-- Date -->
-											<div class="bootstrap-timepicker">
-												<div class="form-group">
-													<label>Date Of Birth:</label>
-													<div class="input-group">
-														<input type="text" class="form-control datepicker"
-															name="staffDateOfBirth">
-														<div class="input-group-addon">
-															<i class="fa fa-calendar"></i>
-														</div>
-													</div>
-													<!-- /.input group -->
-												</div>
-											</div>
-											<!-- /.form group -->
-										</div>
-										<div class="col-md-4">
-											<div class="bootstrap-timepicker">
-												<div class="form-group">
-													<label>Date Of Joining:</label>
-													<div class="input-group">
-														<input type="text" class="form-control datepicker"
-															name="staffJoiningDate">
-														<div class="input-group-addon">
-															<i class="fa fa-calendar"></i>
-														</div>
-													</div>
-													<!-- /.input group -->
-												</div>
-											</div>
-											<!-- /.form group -->
-											<div class="form-group  center-block">
-												<label>Communication Address :</label> 
-												<input type="text" name="communicationAddress.streetName" class="form-control" placeholder="Enter Street Name">
-												<input type="text" name="communicationAddress.area" class="form-control" placeholder="Enter Area">
-												<input type="text" name="communicationAddress.city" class="form-control" placeholder="Enter City">
-											</div>
-											<div class="form-group  center-block">
-												<label>Permanent Address :</label> 
-												<input type="text" name="permanentAddress.streetName" class="form-control" placeholder="Enter Street Name">
-												<input type="text" name="permanentAddress.area" class="form-control" placeholder="Enter Area">
-												<input type="text" name="permanentAddress.city" class="form-control" placeholder="Enter City">
-											</div>
-
-										</div>
-
-										<div class="col-md-4">
-											<div class="form-group">
-												<label>Designation :</label> <select name="staffDesignation"
-													class="form-control select2" id="staffDesignations" style="width: 100%;">
-													<option selected="selected" value="0">Select Designation</option>
-												</select>
-											</div>
-											<!-- phone mask -->
-											<div class="form-group">
-												<label>Phone :</label>
-
-												<div class="input-group">
-													<div class="input-group-addon">
-														<i class="fa fa-phone"></i>
-													</div>
-													<input type="text" name="staffPhoneNumber" class="form-control phonemask"
-														data-inputmask="'mask': '(999) 999-9999'" data-mask="">
-												</div>
-												<!-- /.input group -->
-											</div>
-											<!-- /.form group -->
-											<div class="form-group  center-block">
-												<label>Email :</label> <input type="email" name="staffEmail"
-													class="form-control" placeholder="Enter Staff Email">
-											</div>
-											<div class="form-group">
-												<label for="exampleInputFile">Upload Photo</label> <input
-													type="file" id="exampleInputFile" />
-											</div>
-										</div>
+								
+									<div class="active tab-pane" id="details">
+										<!-- Post -->
+										
+										<!-- /.post -->
 									</div>
-									<!-- /.post -->
-								</div>
-								<!-- /.tab-pane -->
-								<div class="tab-pane" id="services"></div>
-								<!-- /.tab-pane -->
-								<div class="tab-pane" id="salary"></div>
-								<!-- /.tab-pane -->
-								</form>
+									<!-- /.tab-pane -->
+									<div class="tab-pane" id="services">
+										
+									</div>
+									<!-- /.tab-pane -->
+									<div class="tab-pane" id="salary">
+										
+									</div>
+									<!-- /.tab-pane -->
+								
 							</div>
 							<!-- /.tab-content -->
 						</div>
@@ -202,6 +111,161 @@
 			<!-- /.modal-content -->
 		</div>
 		<!-- /.modal-dialog -->
+	</div>
+	
+	<div class="modal fade" id="staffAddModal">
+	  <div class="modal-dialog modal-lg">
+		<div class="modal-content">
+		  <div class="modal-header text-center">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title">Add Service</h4>
+		  </div>
+		  <div class="modal-body">
+			<!--<p>One fine body&hellip;</p>-->
+				<div class="col-md-12">
+					<div class="nav-tabs-custom">
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#staff_details" data-toggle="tab">Details</a></li>
+							<li><a href="#staff_services" data-toggle="tab">Staff</a></li>
+							<li><a href="#staff_salary" data-toggle="tab">Settings</a></li>
+						</ul>
+						<div class="tab-content">
+							<form action="/admin/staff" method="POST" id="StaffForm">
+							<div class="active tab-pane" id="staff_details">
+								<!-- Post -->
+								
+								<div class="row">
+									<div class="col-md-4">
+										<div class="form-group  center-block">
+											<label>Staff Id :</label> <input type="text"
+												class="form-control" disabled placeholder="Enter Staff Id">
+										</div>
+										<div class="form-group  center-block">
+											<label>First Name :</label> <input type="text" name="staffFirstName"
+												class="form-control" required placeholder="Enter Staff First Name">
+										</div>
+										<div class="form-group  center-block">
+											<label>Last Name :</label> <input type="text" name="staffLastName"
+												class="form-control" required placeholder="Enter Staff Last Name">
+										</div>
+										<div class="form-group  center-block">
+											<label>Fathers Name :</label> <input type="text" name="staffFatherName"
+												class="form-control" required placeholder="Enter Fathers Name">
+										</div>
+										<!-- Date -->
+										<div class="bootstrap-timepicker">
+											<div class="form-group">
+												<label>Date Of Birth:</label>
+												<div class="input-group">
+													<input type="text" required class="form-control datepicker"
+														name="staffDateOfBirth">
+													<div class="input-group-addon">
+														<i class="fa fa-calendar"></i>
+													</div>
+												</div>
+												<!-- /.input group -->
+											</div>
+										</div>
+										<!-- /.form group -->
+									</div>
+									<div class="col-md-4">
+										<div class="bootstrap-timepicker">
+											<div class="form-group">
+												<label>Date Of Joining:</label>
+												<div class="input-group">
+													<input type="text" required class="form-control datepicker"
+														name="staffJoiningDate">
+													<div class="input-group-addon">
+														<i class="fa fa-calendar"></i>
+													</div>
+												</div>
+												<!-- /.input group -->
+											</div>
+										</div>
+										<!-- /.form group -->
+										<div class="form-group  center-block">
+											<label>Communication Address :</label> 
+											<input type="text" required name="communicationAddress.streetName" class="form-control" placeholder="Enter Street Name">
+											<input type="text" required name="communicationAddress.area" class="form-control" placeholder="Enter Area">
+											<input type="text" required name="communicationAddress.city" class="form-control" placeholder="Enter City">
+										</div>
+										<div class="form-group  center-block">
+											<label>Permanent Address :</label> 
+											<input type="text" required name="permanentAddress.streetName" class="form-control" placeholder="Enter Street Name">
+											<input type="text" required name="permanentAddress.area" class="form-control" placeholder="Enter Area">
+											<input type="text" required name="permanentAddress.city" class="form-control" placeholder="Enter City">
+										</div>
+
+									</div>
+
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Designation :</label>
+											<select name="staffDesignation"
+												class="form-control select2" id="staffDesignations" style="width: 100%;">
+												<option selected="selected" value="0">Select Designation</option>
+											</select>
+										</div>
+										<!-- phone mask -->
+										<div class="form-group">
+											<label>Phone :</label>
+
+											<div class="input-group">
+												<div class="input-group-addon">
+													<i class="fa fa-phone"></i>
+												</div>
+												<input type="text" name="staffPhoneNumber" required class="form-control phonemask"
+													data-inputmask="'mask': '(999) 999-9999'" data-mask="">
+											</div>
+											<!-- /.input group -->
+										</div>
+										<!-- /.form group -->
+										<div class="form-group  center-block">
+											<label>Email :</label> <input type="email" name="staffEmail"
+												class="form-control" required placeholder="Enter Staff Email">
+										</div>
+										<div class="form-group">
+											<label for="exampleInputFile">Upload Photo</label> <input
+												type="file" id="exampleInputFile" />
+										</div>
+									</div>
+								</div>
+								<!-- /.post -->
+								
+							</div>
+							<!-- /.tab-pane -->
+							<div class="tab-pane" id="staff_services">
+								<div class = "row">
+									<div class = "md-col-8">
+										<div class="checkbox icheck">
+										  <label>
+										    <input id="staffcheckboxInput" type="checkbox"> Staff 1
+										  </label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /.tab-pane -->
+							<div class="tab-pane" id="staff_salary">
+								
+							</div>
+							<!-- /.tab-pane -->
+							</form>
+						</div>
+						<!-- /.tab-content -->
+					</div>
+					<!-- /.nav-tabs-custom -->
+				</div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary addStaffSaveBtn" data-dismiss="modal">Save</button>
+		  </div>
+		</div>
+		<!-- /.modal-content -->
+	  </div>
+	  <!-- /.modal-dialog -->
 	</div>
 	<!-- /*Modals -->
 </div>

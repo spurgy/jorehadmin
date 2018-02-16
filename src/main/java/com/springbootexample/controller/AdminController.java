@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.springbootexample.pojo.SetupDetails;
 import com.springbootexample.pojo.StaffDetails;
 import com.springbootexample.services.AdminService;
 
@@ -25,6 +26,16 @@ public class AdminController {
 	        return "/base/base";
 		}
 		adminService.saveStaffDetails(staffDetails);
-		return "/base/base";
+		return "redirect:/admin/staff";
+    }
+		
+	@RequestMapping(value = "/setup")
+    public String handleSetupRequest(HttpServletRequest request, Model model,@ModelAttribute SetupDetails setupDetails) {
+		model.addAttribute("view", "setup");
+		if(request.getMethod().matches("GET")) {
+	        return "/base/base";
+		}
+		//adminService.saveStaffDetails(setupDetails);
+		return "redirect:/admin/setup";
     }
 }

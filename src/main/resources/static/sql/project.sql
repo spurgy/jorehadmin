@@ -193,3 +193,23 @@ CREATE TABLE `apointment` (
 `updated` DATETIME NOT NULL ,
 PRIMARY KEY (`apointment_id`)) ENGINE = InnoDB;
 
+DROP TABLE IF EXISTS `membership`;
+CREATE TABLE `membership` ( 
+`membership_id` INT NOT NULL AUTO_INCREMENT ,
+`membership_name` VARCHAR(60) NOT NULL ,
+`membership_price` DOUBLE NOT NULL,
+`created` DATETIME NULL DEFAULT NULL,
+`updated` DATETIME NULL DEFAULT NULL,
+PRIMARY KEY (`membership_id`)) ENGINE = InnoDB;
+
+DROP TABLE IF EXISTS `duration`;
+CREATE TABLE `duration` (
+`duration_id` INT NOT NULL AUTO_INCREMENT ,
+`duration` INT NOT NULL ,
+ PRIMARY KEY (`duration_id`)) ENGINE = InnoDB;
+
+DROP TABLE IF EXISTS `membership_duration_relation`;
+CREATE TABLE `membership_duration_relation` (
+`membership_id` INT NOT NULL ,
+`duration_id` INT NOT NULL ) ENGINE = InnoDB;
+
