@@ -121,6 +121,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 			<form th:action="@{/admin/setup}" th:object="${membershipObject}" method="post">
+			<input type="hidden" name="addMethod" value="membership"/>
 				<div class="modal-header text-center">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					  <span aria-hidden="true">&times;</span></button>
@@ -163,6 +164,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 			<form th:action="@{/admin/setup}" th:object="${durationObject}" method="post">
+			<input type="hidden" name="addMethod" value="duration"/>
 				<div class="modal-header text-center">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					  <span aria-hidden="true">&times;</span></button>

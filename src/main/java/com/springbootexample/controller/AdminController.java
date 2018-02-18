@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springbootexample.model.Category;
@@ -35,7 +36,8 @@ public class AdminController {
 	@RequestMapping(value = "/setup")
     public ModelAndView handleSetupRequest(HttpServletRequest request, ModelAndView model,
     		@ModelAttribute Membership membership,
-    		@ModelAttribute Duration duration) {
+    		@ModelAttribute Duration duration,
+    		@RequestParam(value="addMethod", required=false) String addMethod) {
 		model.addObject("view", "setup");
 		if(request.getMethod().matches("GET")) {
 			model.setViewName("/base/base");
@@ -43,10 +45,10 @@ public class AdminController {
 			model.addObject("membershipObject", new Membership());
 			return model;
 		}
-		if(duration != null) {
+		if(duration != null && "duration".equals(addMethod)) {
 			adminService.saveDuration(duration);
 		}
-		if(membership != null) {
+		if(membership != null && "membership".equals(addMethod)) {
 			adminService.saveMember(membership);
 		}
 		return new ModelAndView("redirect:/admin/setup");
