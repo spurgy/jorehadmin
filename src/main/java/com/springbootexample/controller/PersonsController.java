@@ -30,12 +30,6 @@ public class PersonsController {
         return "/base/base";
     }
 	
-	@RequestMapping(value = "/services")
-    public String services(Model model) {
-		model.addAttribute("view", "services");
-        return "/base/base";
-    }
-	
 	@RequestMapping(value = "/bill")
     public String bill(Model model) {
 		model.addAttribute("view", "bill");

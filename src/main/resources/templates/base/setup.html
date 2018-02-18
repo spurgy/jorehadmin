@@ -33,8 +33,10 @@
 								style="width: 100%;">
 								<thead id="thead">
 									<tr>
+										<th class="col-xs-3">Id</th>
 										<th class="col-xs-3">Name</th>
 										<th class="col-xs-3">Duration</th>
+										<th class="col-xs-3">Duration Type</th>
 										<th class="col-xs-3">Price</th>
 									</tr>
 								</thead>
@@ -52,7 +54,7 @@
 										<option>Diamond</option>
 									</select>
 								</div>
-								<button type="submit" onclick=setupAddBtn(this.value); value="addMembership" style = "width: 50px;height: 50px;padding: 10px 16px;font-size: 18px;line-height: 1.33;border-radius: 25px;" class="btn btn-primary btn-lg pull-right " title ="Add Membership" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus"></i></button>
+								<button type="button" value="addMembership" style = "width: 50px;height: 50px;padding: 10px 16px;font-size: 18px;line-height: 1.33;border-radius: 25px;" class="btn btn-primary btn-lg pull-right setupModalView" title ="Add Membership" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus"></i></button>
 							</div>
 						</div>
 					</div>
@@ -80,9 +82,9 @@
 								style="width: 100%;">
 								<thead id="thead">
 									<tr>
-										<th class="col-xs-3">S.no</th>
+										<th class="col-xs-3">Id</th>
 										<th class="col-xs-3">Duration</th>
-										
+										<th class="col-xs-3">Duration Type</th>
 									</tr>
 								</thead>
 							</table>
@@ -100,7 +102,7 @@
 										<option>Years</option>
 									</select>
 								</div>
-								<button type="submit" onclick=setupAddBtn(this.value); value="addDuration" style = "width: 50px;height: 50px;padding: 10px 16px;font-size: 18px;line-height: 1.33;border-radius: 25px;" class="btn btn-primary btn-lg pull-right " title ="Add Duration" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus"></i></button>
+								<button type="button" value="addDuration" style = "width: 50px;height: 50px;padding: 10px 16px;font-size: 18px;line-height: 1.33;border-radius: 25px;" class="btn btn-primary btn-lg pull-right setupModalView" title ="Add Duration" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus"></i></button>
 							</div>
 						</div>
 					</div>
@@ -118,6 +120,7 @@
 	<div class="modal fade" id="setupAddMembershipModal">
 		<div class="modal-dialog">
 			<div class="modal-content">
+			<form th:action="@{/admin/setup}" th:object="${membershipObject}" method="post">
 				<div class="modal-header text-center">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					  <span aria-hidden="true">&times;</span></button>
@@ -128,19 +131,17 @@
 						<div class="col-md-12">
 							<div class="form-group">
 								<label>Membership Name :</label>
-								<input type="text" class="form-control setupAddMembershipModalNameInp" placeholder="Enter Membership Name"/>
+								<input type="text" class="form-control setupAddMembershipModalNameInp" name="name" placeholder="Enter Membership Name"/>
 							</div>
 							<div class="form-group">
 								<label>Duration :</label>
-								<select class="form-control select2" id="setupAddMembershipModalDurationDrpdwn" style="width: 100%;">
+								<select class="form-control select2" id="setupAddMembershipModalDurationDrpdwn" name="duration" style="width: 100%;">
 									<option selected="selected">Select Duration</option>
-									<option>Hair Care</option>
-									<option>Skin Care</option>
 								</select>
 							</div>
 							<div class="form-group">
 								<label>Membership Price :</label>
-								<input type="text" class="form-control setupAddMembershipModalPriceInp" placeholder="Enter Membership Price"/>
+								<input type="text" class="form-control setupAddMembershipModalPriceInp" name="price" placeholder="Enter Membership Price"/>
 							</div>
 						</div>
 					</div>
@@ -148,8 +149,9 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default pull-left" data-dismiss="modal" >Close</button>
-					<button type="button" class="btn btn-primary setupAddMembershipModalSaveBtn" id="add-row">Save</button>
+					<button type="submit" class="btn btn-primary setupAddMembershipModalSaveBtn">Save</button>
 				</div>
+				</form>
 			</div>
 		<!-- /.modal-content -->
 		</div>
@@ -160,6 +162,7 @@
 	<div class="modal fade" id="setupAddDurationModal">
 		<div class="modal-dialog">
 			<div class="modal-content">
+			<form th:action="@{/admin/setup}" th:object="${durationObject}" method="post">
 				<div class="modal-header text-center">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					  <span aria-hidden="true">&times;</span></button>
@@ -169,8 +172,19 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="form-group">
-								<label>Duration (in Months) :</label>
-								<input type="text" class="form-control setupAddDurationModalDurationInp" placeholder="Enter Duration (in Months)"/>
+								<label>Duration :</label>
+								<input type="text" class="form-control setupAddDurationModalDurationInp" name="durationPeriod" placeholder="Enter Duration"/>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label>Duration Type :</label>
+								<select class="form-control select2" style="width: 100%;" name="durationType">
+									<option selected="selected" value="minutes" >Minutes</option>
+									<option value="hours" >Hours</option>
+									<option value="months" >Months</option>
+									<option value="years" >Years</option>
+								</select>
 							</div>
 						</div>
 					</div>
@@ -178,8 +192,9 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default pull-left" data-dismiss="modal" >Close</button>
-					<button type="button" class="btn btn-primary setupAddDurationModalSaveBtn" id="add-row">Save</button>
+					<button type="submit" class="btn btn-primary setupAddDurationModalSaveBtn">Save</button>
 				</div>
+			</form>
 			</div>
 		<!-- /.modal-content -->
 		</div>

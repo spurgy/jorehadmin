@@ -1,0 +1,120 @@
+<script th:fragment="staff">
+
+	staffDatatable = $('#staffTable').DataTable({
+			"sAjaxSource": "/util/getStaffList",
+			"sAjaxDataProp": "",
+			"asStripeClasses": [ 'strip1', 'strip2', 'strip3', 'strip4', 'strip5' ],
+			"order": [[ 0, "asc" ]],
+			"aoColumns": [
+			      { "mData": "id"},
+		          { "mData": "name" },
+				  { "mData": "phoneNumber" },
+				  { "mData": "email" },
+				  { "mData": "salary"}
+			]
+	});
+	
+	$(function () {
+		$(".addStaffBtn").click(function() {
+			$("#staffAddModal").modal({backdrop: "static"});
+			$("#staffAddModal").modal('show');
+		});
+		
+		$(".addStaffSaveBtn").click(function() {
+			$("#StaffForm").submit();
+		});
+		
+		$('#staffTable tbody').on( 'click', 'tr', function () {
+		    console.log( staffDatatable.row( this ).data() );
+		} );
+		
+		$.post( "/util/getDesignationsMap", function( data ) {
+			$.each(data, function(key, value){
+		        $("#staffDesignations").append('<option value="'+ key +'">'+ value +'</option>')
+			})
+		});
+		
+		$( ".staffEmail" ).change(function() {
+			$.post( "/util/checkEmail", { email: this.value })
+			  .done(function( data ) {
+				  if(data.status > 0) {
+					  alert("Email exists already. Please enter a new Email.");
+					  $(".staffEmail").val("");
+				  }
+			});
+		});
+	});
+</script>
+<script th:fragment="setup">
+	
+	durationDatatable = $('#setupDurationTable').DataTable({
+		"sAjaxSource": "/util/getDurationList",
+		"sAjaxDataProp": "",
+		"asStripeClasses": [ 'strip1', 'strip2', 'strip3', 'strip4', 'strip5' ],
+		"order": [[ 0, "asc" ]],
+		"aoColumns": [
+		      { "mData": "id"},
+	          { "mData": "durationPeriod" },
+			  { "mData": "durationType" }
+		]
+	});
+	
+	membershipDatatable = $('#setupMembershipTable').DataTable({
+		"sAjaxSource": "/util/getMembershipList",
+		"sAjaxDataProp": "",
+		"asStripeClasses": [ 'strip1', 'strip2', 'strip3', 'strip4', 'strip5' ],
+		"order": [[ 0, "asc" ]],
+		"aoColumns": [
+		      { "mData": "id"},
+	          { "mData": "name" },
+			  { "mData": "duration.durationPeriod" },
+			  { "mData": "duration.durationType" },
+			  { "mData": "price" }
+		]
+	});
+	
+	$(function () {
+		$(".setupModalView").click(function() {
+			if(this.value == "addMembership"){
+				$("#setupAddMembershipModal").modal({backdrop: "static"});
+				$("#setupAddMembershipModal").modal('show');
+			}
+			if(this.value == "addDuration"){
+				$("#setupAddDurationModal").modal({backdrop: "static"});
+				$("#setupAddDurationModal").modal('show');
+			}
+		});
+		
+		$.post( "/util/getDurationMap", function( data ) {
+			$.each(data, function(key, value){
+		        $("#setupAddMembershipModalDurationDrpdwn").append('<option value="'+ key +'">'+ value +'</option>')
+			})
+		});
+	});
+</script>
+<script th:fragment="services">
+
+	durationDatatable = $('#servicesCPDtable').DataTable({
+		"sAjaxSource": "/util/getCategoryList",
+		"sAjaxDataProp": "",
+		"asStripeClasses": [ 'strip1', 'strip2', 'strip3', 'strip4', 'strip5' ],
+		"order": [[ 0, "asc" ]],
+		"aoColumns": [
+		      { "mData": "id"},
+	          { "mData": "name" },
+	          { "mData": null,
+	             "bSortable": false,
+	             "mRender": function(data, type, full) {
+	            	    return '<button type="button" class="btn btn-primary btn-sm addServiceToCat" value="'+data.id+'"><small>Add Service</small></button>' }}
+		]
+	});
+	
+	$(function () {
+		$(".addServiceToCat").click(function() {
+			$(".serviceCatId").val(this.value);
+			$("#servcesAddtoCatModal").modal({backdrop: "static"});
+			$("#servcesAddtoCatModal").modal('show');
+		});
+	});
+	
+</script>

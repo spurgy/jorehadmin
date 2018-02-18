@@ -7,8 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.springbootexample.pojo.SetupDetails;
+import com.springbootexample.model.Category;
+import com.springbootexample.model.Duration;
+import com.springbootexample.model.Membership;
 import com.springbootexample.pojo.StaffDetails;
 import com.springbootexample.services.AdminService;
 
@@ -30,12 +33,37 @@ public class AdminController {
     }
 		
 	@RequestMapping(value = "/setup")
-    public String handleSetupRequest(HttpServletRequest request, Model model,@ModelAttribute SetupDetails setupDetails) {
-		model.addAttribute("view", "setup");
+    public ModelAndView handleSetupRequest(HttpServletRequest request, ModelAndView model,
+    		@ModelAttribute Membership membership,
+    		@ModelAttribute Duration duration) {
+		model.addObject("view", "setup");
 		if(request.getMethod().matches("GET")) {
-	        return "/base/base";
+			model.setViewName("/base/base");
+			model.addObject("durationObject", new Duration());
+			model.addObject("membershipObject", new Membership());
+			return model;
 		}
-		//adminService.saveStaffDetails(setupDetails);
-		return "redirect:/admin/setup";
+		if(duration != null) {
+			adminService.saveDuration(duration);
+		}
+		if(membership != null) {
+			adminService.saveMember(membership);
+		}
+		return new ModelAndView("redirect:/admin/setup");
+    }
+	
+	@RequestMapping(value = "/services")
+    public ModelAndView services(HttpServletRequest request, ModelAndView model,
+    		@ModelAttribute Category category) {
+		model.addObject("view", "services");
+		if(request.getMethod().matches("GET")) {
+			model.setViewName("/base/base");
+			model.addObject("categoryObject", new Category());
+			return model;
+		}
+		if(category != null) {
+			adminService.saveCategory(category);
+		}
+		return new ModelAndView("redirect:/admin/services");
     }
 }

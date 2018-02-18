@@ -43,28 +43,11 @@
 							<table class="table table-bordered table-hover" id="servicesCPDtable" style="width: 100%;">
 								<thead id = "thead" >
 								 <tr>
-								  <th class="col-xs-3 center">Name</th>
-								  <th class="col-xs-3 center">No. Services</th>
-								  <th class="col-xs-3 center"></th>
+								 	  <th class="col-xs-3 center">Id</th>
+									  <th class="col-xs-3 center">Name</th>
+									  <th class="col-xs-3 center"></th>
 								 </tr>
 								</thead>
-								<tbody  style="height:160px;overflow-y:auto;width: 100%;" id = "cpdbody">	
-									<tr>
-									  <td class="col-xs-3">John Doe</td>
-									  <td class="col-xs-3">11</td>
-									  <td class="col-xs-3"><button type="submit" onclick="servicesCatAddService();" value="addCatService" class="btn btn-primary btn-sm "><small>Add Service</small></button></td>
-									</tr>
-									<tr>
-									  <td>Alexander Pierce</td>
-									  <td>20</td>
-									  <td><button type="submit" onclick="servicesCatAddService();" value="addCatService" class="btn btn-primary btn-sm "><small>Add Service</small></button></td>
-									</tr>
-									<tr>	
-									  <td>Bob Doe</td>
-									  <td>7</td>
-									  <td><button type="submit" onclick="servicesCatAddService();" value="addCatService" class="btn btn-primary btn-sm "><small>Add Service</small></button></td>
-									</tr>
-								</tbody>
 							</table>
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary btn-lg pull-right servicesAddCpdBtn" onclick="servicesAddBtn(this.value)" disabled style = "width: 50px;height: 50px;padding: 10px 16px;font-size: 18px;line-height: 1.33;border-radius: 25px;" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus"></i></button>
@@ -254,6 +237,7 @@
 	<div class="modal fade" id="servicesAddCPDmodal">
 		<div class="modal-dialog">
 			<div class="modal-content">
+			<form th:action="@{/admin/services}" th:object="${categoryObject}" method="post">
 				<div class="modal-header text-center">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					  <span aria-hidden="true">&times;</span></button>
@@ -265,7 +249,7 @@
 						<div class="col-md-12">
 							<div class="form-group  center-block">
 								  <label id="servicesaddCPDmodalLabel"></label>
-								  <input type="text" class="form-control" id="servicesaddCPDmodalinput"/>
+								  <input type="text" name="name" class="form-control" id="servicesaddCPDmodalinput"/>
 							</div>
 						</div>
 						<!-- /.col -->
@@ -274,8 +258,9 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default pull-left servicesaddCPDmodalDeleteBtn" data-dismiss="modal" >Delete</button>
 					<button type="button" class="btn btn-default " data-dismiss="modal" >Close</button>
-					<button type="button" class="btn btn-primary servicesaddCPDmodalSaveBtn" id="add-row">Save</button>
+					<button type="submit" class="btn btn-primary servicesaddCPDmodalSaveBtn" >Save</button>
 				</div>
+			</form>
 			</div>
 		<!-- /.modal-content -->
 		</div>
@@ -306,8 +291,8 @@
 								<div class="row">
 									<div class="col-md-4">
 										<div class="form-group  center-block">
-											  <label>Category Name :</label>
-											  <input type="text" class="form-control" disabled placeholder="Enter Category Name"/>
+											  <label>Category Id :</label>
+											  <input type="text" class="form-control serviceCatId" disabled placeholder="Enter Category Name"/>
 										</div>
 										
 										<div class="form-group  center-block">

@@ -7,9 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.springbootexample.dao.CategoryRepository;
 import com.springbootexample.dao.DesignationRepository;
+import com.springbootexample.dao.DurationRepository;
+import com.springbootexample.dao.MembershipRepository;
 import com.springbootexample.dao.RoleRepository;
 import com.springbootexample.dao.StaffRepository;
+import com.springbootexample.model.Category;
+import com.springbootexample.model.Duration;
+import com.springbootexample.model.Membership;
 import com.springbootexample.model.Role;
 import com.springbootexample.model.Staff;
 import com.springbootexample.model.User;
@@ -27,6 +33,12 @@ public class AdminServiceImpl implements AdminService{
     private DesignationRepository designationRepository;
 	@Autowired
     private StaffRepository staffrepository;
+	@Autowired
+    private DurationRepository durationRepository;
+	@Autowired
+    private MembershipRepository membershipRepository;
+	@Autowired
+    private CategoryRepository categoryRepository;
 	
 	public void saveStaffDetails(StaffDetails staffDetails) {
 		Staff staff = new Staff();
@@ -38,7 +50,7 @@ public class AdminServiceImpl implements AdminService{
 		staff.setDesignation(designationRepository.findById(staffDetails.getStaffDesignation()));
 		staff.setEmail(staffDetails.getStaffEmail());
 		staff.setFatherName(staffDetails.getStaffFatherName());
-		staff.setName(staffDetails.getStaffLastName()+staffDetails.getStaffFirstName());
+		staff.setName(staffDetails.getStaffFirstName()+" "+staffDetails.getStaffLastName());
 		staff.setPermanentArea(staffDetails.getPermanentAddress().getArea());
 		staff.setPermanentCity(staffDetails.getPermanentAddress().getCity());
 		staff.setPermanentStreet(staffDetails.getPermanentAddress().getStreetName());
@@ -57,5 +69,20 @@ public class AdminServiceImpl implements AdminService{
 //		staff.setCreated(new Date());
 //		staff.setUpdated(new Date());
 		staffrepository.save(staff);
+	}
+
+	@Override
+	public void saveDuration(Duration duration) {
+		durationRepository.save(duration);
+	}
+	
+	@Override
+	public void saveMember(Membership membership) {
+		membershipRepository.save(membership);
+	}
+	
+	@Override
+	public void saveCategory(Category category) {
+		categoryRepository.save(category);
 	}
 }

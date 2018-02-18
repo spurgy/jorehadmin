@@ -64,13 +64,6 @@ CREATE TABLE `user_role` (
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `services_category`;
-CREATE TABLE `services_category` ( 
-`services_category_id` INT NOT NULL AUTO_INCREMENT ,
-`services_category_name` VARCHAR(20) NOT NULL ,
-PRIMARY KEY (`services_category_id`)
-) ENGINE = InnoDB;
-
 DROP TABLE IF EXISTS `staff`;
 CREATE TABLE `staff` (
 `staff_id` INT NOT NULL AUTO_INCREMENT ,
@@ -110,6 +103,34 @@ CREATE TABLE `staff_user_role_relation` (
 `created` DATETIME NULL DEFAULT NULL ,
 `updated` DATETIME NULL DEFAULT NULL) ENGINE = InnoDB;
 
+DROP TABLE IF EXISTS `membership`;
+CREATE TABLE `membership` (
+`membership_id` INT NOT NULL AUTO_INCREMENT ,
+`membership_name` VARCHAR(60) NOT NULL ,
+`membership_price` DOUBLE NOT NULL,
+`duration_id` INT NOT NULL,
+`created` DATETIME NULL DEFAULT NULL,
+`updated` DATETIME NULL DEFAULT NULL,
+PRIMARY KEY (`membership_id`)) ENGINE = InnoDB;
+
+DROP TABLE IF EXISTS `duration`;
+CREATE TABLE `duration` (
+`duration_id` INT NOT NULL AUTO_INCREMENT ,
+`duration` INT NOT NULL ,
+`duration_type` VARCHAR(18) NOT NULL ,
+ PRIMARY KEY (`duration_id`)) ENGINE = InnoDB;
+ 
+DROP TABLE IF EXISTS `services_category`;
+CREATE TABLE `services_category` ( 
+`services_category_id` INT NOT NULL AUTO_INCREMENT ,
+`services_category_name` VARCHAR(20) NOT NULL ,
+`created` DATETIME NULL DEFAULT NULL,
+`updated` DATETIME NULL DEFAULT NULL,
+PRIMARY KEY (`services_category_id`)
+) ENGINE = InnoDB;
+ 
+ 
+
 DROP TABLE IF EXISTS `service`;
 CREATE TABLE `service` (
 `service_id` INT NOT NULL AUTO_INCREMENT ,
@@ -120,6 +141,7 @@ CREATE TABLE `service` (
 `created_at` DATE NOT NULL ,
 `updated_at` DATE NOT NULL ,
 PRIMARY KEY (`service_id`)) ENGINE = InnoDB;
+
 
 DROP TABLE IF EXISTS `service_duration`;
 CREATE TABLE `service_duration` (
@@ -132,31 +154,11 @@ CREATE TABLE `service_duration_relation` (
 `service_id` INT NOT NULL ,
 `duration_id` INT NOT NULL ) ENGINE = InnoDB;
 
-DROP TABLE IF EXISTS `membership`;
-CREATE TABLE `membership` (
-`membership_id` INT NOT NULL AUTO_INCREMENT ,
-`membership_name` VARCHAR(40) NOT NULL ,
-PRIMARY KEY (`membership_id`)) ENGINE = InnoDB;
-
-DROP TABLE IF EXISTS `membership_duration`;
-CREATE TABLE `membership_duration` (
-`membership_duration_id` INT NOT NULL AUTO_INCREMENT ,
-`membership_duration_time` INT NOT NULL ,
-`membership_duration_price` INT NOT NULL ,
-PRIMARY KEY (`membership_duration_id`)) ENGINE = InnoDB;
-
-
-DROP TABLE IF EXISTS `membership_duration_relation`;
-CREATE TABLE `membership_duration_relation` (
-`membership_id` INT NOT NULL ,
-`membership_duration_id` INT NOT NULL ) ENGINE = InnoDB;
-
 DROP TABLE IF EXISTS `services_membership_relation`;
 CREATE TABLE `services_membership_relation` (
 `service_id` INT NOT NULL ,
 `membership_id` INT NOT NULL,
 `loyalty_points_id` INT NOT NULL) ENGINE = InnoDB;
-
 
 DROP TABLE IF EXISTS `loyalty_points`;
 CREATE TABLE `loyalty_points` (
@@ -192,24 +194,3 @@ CREATE TABLE `apointment` (
 `created` DATETIME NOT NULL ,
 `updated` DATETIME NOT NULL ,
 PRIMARY KEY (`apointment_id`)) ENGINE = InnoDB;
-
-DROP TABLE IF EXISTS `membership`;
-CREATE TABLE `membership` ( 
-`membership_id` INT NOT NULL AUTO_INCREMENT ,
-`membership_name` VARCHAR(60) NOT NULL ,
-`membership_price` DOUBLE NOT NULL,
-`created` DATETIME NULL DEFAULT NULL,
-`updated` DATETIME NULL DEFAULT NULL,
-PRIMARY KEY (`membership_id`)) ENGINE = InnoDB;
-
-DROP TABLE IF EXISTS `duration`;
-CREATE TABLE `duration` (
-`duration_id` INT NOT NULL AUTO_INCREMENT ,
-`duration` INT NOT NULL ,
- PRIMARY KEY (`duration_id`)) ENGINE = InnoDB;
-
-DROP TABLE IF EXISTS `membership_duration_relation`;
-CREATE TABLE `membership_duration_relation` (
-`membership_id` INT NOT NULL ,
-`duration_id` INT NOT NULL ) ENGINE = InnoDB;
-

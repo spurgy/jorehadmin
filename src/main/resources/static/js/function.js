@@ -50,41 +50,6 @@ $(function(){
 	$('#servicesServiceTable').DataTable()
 	servicepacTable = $('#servicesPackagesTable').DataTable();
 	
-		
-	 datatable = $('#staffTable').DataTable({
-		"sAjaxSource": "/util/getStaff",
-		"sAjaxDataProp": "",
-		"asStripeClasses": [ 'strip1', 'strip2', 'strip3', 'strip4', 'strip5' ],
-		"order": [[ 0, "asc" ]],
-		"aoColumns": [
-		      { "mData": "id"},
-	          { "mData": "name" },
-			  { "mData": "phoneNumber" },
-			  { "mData": "email" },
-			  { "mData": "salary"}
-		]
-	});
-	
-	 $('#staffTable tbody').on( 'click', 'tr', function () {
-		    console.log( datatable.row( this ).data() );
-		} );
-	
-	// Staff Table Load designations
-	$.post( "/util/getDesignations", function( data ) {
-		$.each(data, function(key, value){
-	        $("#staffDesignations").append('<option value="'+ key +'">'+ value +'</option>')
-		})
-	});
-	//-------Staff Page Tables-----
-	
-	//Setup Page Tables
-	$('#setupMembershipTable').DataTable()
-	$('#setupDurationTable').DataTable()
-	
-	
-	//-------Setup Page Tables-----
-	
-	
 })
 
 //Inventory Functions
@@ -115,9 +80,6 @@ function inventoryAddBtn(value){
 //service page functions
 
 $(function(){
-	
-	
-	
 	//cpd dropdown function
 	$(".servicesAddCPDdropdown").change(function(){
 		console.log(this.value);
@@ -167,12 +129,8 @@ $(function(){
 	});
 })
 
-function servicesCatAddService(){
-	$("#servcesAddtoCatModal").modal({backdrop: "static"});
-	$("#servcesAddtoCatModal").modal('show');
-}
-
 $(function () {
+	
    $('.addservicestaffcheckboxInput').iCheck({
 	 checkboxClass: 'icheckbox_square-blue',
 	 radioClass: 'iradio_square-blue',
@@ -183,21 +141,6 @@ $(function () {
 
 //Staff Page function
 
-$(".addStaffBtn").click(function() {
-	
-	$("#staffAddModal").modal({backdrop: "static"});
-	$("#staffAddModal").modal('show');
-});
-
-$(".addStaffSaveBtn").click(function() {
-	$("#StaffForm").submit();
-});
-
-$(".strip1").click(function() {
-	console.log(this);
-});
-
-
 $(function () {
    $('#staffcheckboxInput').iCheck({
 	 checkboxClass: 'icheckbox_square-blue',
@@ -206,24 +149,3 @@ $(function () {
    });
  });
 
-
-
-
-
-//------Staff Page function------
-
-//Setup Page function
-
-function setupAddBtn(value){
-	if(value == "addMembership"){
-		$("#setupAddMembershipModal").modal({backdrop: "static"});
-		$("#setupAddMembershipModal").modal('show');
-	}
-	if(value=="addDuration"){
-		$("#setupAddDurationModal").modal({backdrop: "static"});
-		$("#setupAddDurationModal").modal('show');
-	}
-}
-
-
-//------Setup Page function------
