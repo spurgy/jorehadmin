@@ -1,21 +1,25 @@
-p{
-	font-size: xx-large;
-    font-family: serif;
-    color: crimson;
-}
+/* p{ */
+/* 	font-size: xx-large; */
+/*     font-family: serif; */
+/*     color: crimson; */
+/* } */
 
-body {
-    background-color: lightblue;
-}
+/* body { */
+/*     background-color: lightblue; */
+/* } */
 
-#styleCenter{
-	text-align:center;
-}
+/* #styleCenter{ */
+/* 	text-align:center; */
+/* } */
 
-.center{
-	text-align:center;
-}
+/* .center{ */
+/* 	text-align:center; */
+/* } */
 
 .displayNone{
 	display: none;
+}
+
+.displayInlineBlock{
+	display: inline-block;
 }

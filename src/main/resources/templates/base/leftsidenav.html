@@ -10,7 +10,6 @@
 					alt="User Image" />
 			</div>
 			<div class="pull-left info">
-	                
 				<p sec:authentication="name"></p>
 				<a href="#" sec:authentication="principal.authorities"><i class="fa fa-circle text-success"></i></a>
 			</div>
@@ -44,14 +43,16 @@
 				</span>-->
 			</a>
 		</li>
-		<li>
-			<a href="pages/services.html" th:href="@{/admin/services}">
-				<i class="fa fa-calendar"></i> <span>Services</span>
-				<!--<span class="pull-right-container">
-				<small class="label pull-right bg-green">new</small>
-				</span>-->
-			</a>
-		</li>
+		<div sec:authorize="hasAuthority('ADMIN')" th:remove="tag">
+			<li>
+				<a href="pages/services.html" th:href="@{/admin/services}">
+					<i class="fa fa-calendar"></i> <span>Services</span>
+					<!--<span class="pull-right-container">
+					<small class="label pull-right bg-green">new</small>
+					</span>-->
+				</a>
+			</li>
+		</div>
 		<li>
 			<a href="pages/staff_work_status.html" th:href="@{/person/home}">
 				<i class="fa fa-cut"></i> <span>Staff Work Status</span>
@@ -60,14 +61,16 @@
 				</span>-->
 			</a>
 		</li>
-		<li>
-			<a href="pages/staff.html" th:href="@{/admin/staff}">
-				<i class="fa fa-users"></i> <span>Staff</span>
-				<!--<span class="pull-right-container">
-				<small class="label pull-right bg-green">new</small>
-				</span>-->
-			</a>
-		</li>
+		<div sec:authorize="hasAuthority('ADMIN')" th:remove="tag">
+			<li>
+				<a href="pages/staff.html" th:href="@{/admin/staff}">
+					<i class="fa fa-users"></i> <span>Staff</span>
+					<!--<span class="pull-right-container">
+					<small class="label pull-right bg-green">new</small>
+					</span>-->
+				</a>
+			</li>
+		</div>
 		<li>
 			<a href="/bill" th:href="@{/person/bill}">
 				<i class="fa fa-file"></i> <span>Bill</span>
@@ -92,14 +95,16 @@
 				</span>-->
 			</a>
 		</li>
-		<li >
-			<a href="pages/setup.html" th:href="@{/admin/setup}">
-				<i class="fa fa-cogs"></i> <span>Setup</span>
-				<!--<span class="pull-right-container">
-				<small class="label pull-right bg-green">new</small>
-				</span>-->
-			</a>
-		</li>
+		<div sec:authorize="hasAuthority('ADMIN')" th:remove="tag">
+			<li >
+				<a href="pages/setup.html" th:href="@{/admin/setup}">
+					<i class="fa fa-cogs"></i> <span>Setup</span>
+					<!--<span class="pull-right-container">
+					<small class="label pull-right bg-green">new</small>
+					</span>-->
+				</a>
+			</li>
+		</div>
 	</ul>
 	</section>
 	<!-- /.sidebar -->

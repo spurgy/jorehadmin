@@ -42,16 +42,22 @@ public class AjaxController {
         return durations;
     }
 	
+	@RequestMapping(value = "/getDurationList")
+	@ResponseBody
+    public List<Duration> getDurationDataTable() {
+		return ajaxservice.getAllDuration();
+    }
+	
 	@RequestMapping(value = "/getStaffList")
 	@ResponseBody
     public List<Staff> getStaffDataTable() {
 		return ajaxservice.getAllStaff();
     }
 	
-	@RequestMapping(value = "/getDurationList")
+	@RequestMapping(value = "/getMembershipMap")
 	@ResponseBody
-    public List<Duration> getDurationDataTable() {
-		return ajaxservice.getAllDuration();
+    public Map<Integer, String> getMembershipMap() {
+		return ajaxservice.getMembershipMap();
     }
 	
 	@RequestMapping(value = "/getMembershipList")

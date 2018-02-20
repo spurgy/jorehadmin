@@ -62,8 +62,19 @@ public class AjaxServiceImpl implements AjaxService{
 	}
 	
 	@Override
+	public Map<Integer, String> getMembershipMap(){
+		Map<Integer, String> memberships= new HashMap<Integer, String>();
+		memberships.put(0, "Select Membership Type");
+		for(Membership membership : membershipRepository.findAll()) {
+			memberships.put(membership.getId(), membership.getName());
+		}
+		return memberships;
+	}
+	
+	@Override
 	public Map<Integer, String> getAllDurations(){
 		Map<Integer, String> durations= new HashMap<Integer, String>();
+		durations.put(0, "Select Duration");
 		for(Duration duration : durationRepository.findAll()) {
 			durations.put(duration.getId().intValue(), duration.getDurationPeriod()+" ("+duration.getDurationType()+')');
 		}

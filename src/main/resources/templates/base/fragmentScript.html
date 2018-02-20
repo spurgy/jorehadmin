@@ -105,13 +105,38 @@
 	          { "mData": null,
 	             "bSortable": false,
 	             "mRender": function(data, type, full) {
-	            	    return '<button type="button" class="btn btn-primary btn-sm addServiceToCat" value="'+data.id+'"><small>Add Service</small></button>' }}
+	            	    return '<button type="button" class="btn btn-primary btn-sm addServiceToCat" data-name="'+data.name+'" value="'+data.id+'"><small>Add Service</small></button>' }}
 		]
 	});
 	
 	$(function () {
-		$(".addServiceToCat").click(function() {
-			$(".serviceCatId").val(this.value);
+		
+		$.post( "/util/getDurationMap", function( data ) {
+			$.each(data, function(key, value){
+		        $("#getDuration").append('<option value="'+ key +'">'+ value +'</option>')
+			})
+		});
+		
+		$.post( "/util/getMembershipMap", function( data ) {
+			$.each(data, function(key, value){
+		        $(".getMemberships").append('<option value="'+ key +'">'+ value +'</option>')
+			})
+		});
+		
+		$("#addLoyaltyPoints").click(function() {
+			$getloyaltyPoints = $('.getloyaltyPoints');
+			$getMemberships = $('.getMemberships');
+			if($getloyaltyPoints.val() != "" && $getMemberships.val() != "" && $getMemberships.val() != 0){
+				$('.loyaltyPointsTable').append(
+					'<tr id="'+$getMemberships.val()+'"><td>'+$getMemberships.val()+'</td><td>'+$getMemberships.find("option:selected").text()+'</td><td>'+$getloyaltyPoints.val()+'</td><td><button type="button" class="btn btn-link" data-toggle="tooltip" title="remove"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td></tr>'
+				);
+			} else {
+				alert("Please enter the valid Data");
+			}
+		});
+		
+		$(document).on("click", ".addServiceToCat", function() {
+			$(".serviceCatId").val($(this).val()+" ("+$(this).data('name')+")");
 			$("#servcesAddtoCatModal").modal({backdrop: "static"});
 			$("#servcesAddtoCatModal").modal('show');
 		});

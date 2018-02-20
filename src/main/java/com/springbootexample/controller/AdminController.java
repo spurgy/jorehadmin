@@ -15,6 +15,7 @@ import com.springbootexample.model.Duration;
 import com.springbootexample.model.Membership;
 import com.springbootexample.pojo.StaffDetails;
 import com.springbootexample.services.AdminService;
+import com.springbootexample.services.AjaxService;
 
 @Controller
 @RequestMapping(value = "/admin")
@@ -22,6 +23,8 @@ public class AdminController {
 	
 	@Autowired
 	AdminService adminService;
+	@Autowired
+	private AjaxService ajaxservice;
 	
 	@RequestMapping(value = "/staff")
     public String handleStaffRequest(HttpServletRequest request, Model model,@ModelAttribute StaffDetails staffDetails) {
@@ -61,6 +64,7 @@ public class AdminController {
 		if(request.getMethod().matches("GET")) {
 			model.setViewName("/base/base");
 			model.addObject("categoryObject", new Category());
+			model.addObject("staffMap", ajaxservice.getAllStaff());
 			return model;
 		}
 		if(category != null) {

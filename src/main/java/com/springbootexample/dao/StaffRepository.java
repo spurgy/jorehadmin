@@ -1,8 +1,8 @@
 package com.springbootexample.dao;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.springbootexample.model.Staff;
 
-public interface StaffRepository extends CrudRepository<Staff, Integer>{
+public interface StaffRepository extends JpaRepository<Staff, Integer>{
 }

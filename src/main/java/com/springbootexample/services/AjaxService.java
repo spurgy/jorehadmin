@@ -19,5 +19,7 @@ public interface AjaxService {
 	
 	public List<Membership> getAllMembership();
 	
+	public Map<Integer, String> getMembershipMap();
+	
 	public List<Category> getCategoryList();
 }
