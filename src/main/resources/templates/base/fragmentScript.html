@@ -128,11 +128,18 @@
 			$getMemberships = $('.getMemberships');
 			if($getloyaltyPoints.val() != "" && $getMemberships.val() != "" && $getMemberships.val() != 0){
 				$('.loyaltyPointsTable').append(
-					'<tr id="'+$getMemberships.val()+'"><td>'+$getMemberships.val()+'</td><td>'+$getMemberships.find("option:selected").text()+'</td><td>'+$getloyaltyPoints.val()+'</td><td><button type="button" class="btn btn-link" data-toggle="tooltip" title="remove"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td></tr>'
+					'<tr id="'+$getMemberships.val()+'"><td>'+$getMemberships.val()+'</td><td>'+$getMemberships.find("option:selected").text()+'</td><td>'+$getloyaltyPoints.val()+'</td><td><button type="button" class="btn btn-link btnDeleteloyaltyPointsTableRow" data-toggle="tooltip" data-id="'+$getMemberships.val()+'" title="remove"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td></tr>'
 				);
 			} else {
 				alert("Please enter the valid Data");
 			}
+			$getloyaltyPoints.val("");
+			$getMemberships.val("");
+		});
+		
+		$(document).on("click", ".btnDeleteloyaltyPointsTableRow", function() {
+			var tr = '#'+$(this).data('id');
+			$(tr).remove();
 		});
 		
 		$(document).on("click", ".addServiceToCat", function() {
