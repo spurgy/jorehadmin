@@ -22,4 +22,6 @@ public interface AjaxService {
 	public Map<Integer, String> getMembershipMap();
 	
 	public List<Category> getCategoryList();
+
+	public Map<Long, String> getCategoryMap();
 }

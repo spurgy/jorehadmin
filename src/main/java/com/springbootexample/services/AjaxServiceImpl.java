@@ -85,4 +85,15 @@ public class AjaxServiceImpl implements AjaxService{
 	public List<Category> getCategoryList(){
 		return (List<Category>)categoryRepository.findAll();
 	}
+
+	@Override
+	public Map<Long, String> getCategoryMap() {
+		// TODO Auto-generated method stub
+		Map<Long, String> categories= new HashMap<Long, String>();
+		categories.put( 0L, "Select Category");
+		for(Category category : categoryRepository.findAll()) {
+			categories.put(category.getId(), category.getName());
+		}
+		return categories;
+	}
 }

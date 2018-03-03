@@ -72,6 +72,12 @@ public class AjaxController {
 		return ajaxservice.getCategoryList();
     }
 	
+	@RequestMapping(value = "/getCategoryMap")
+	@ResponseBody
+    public Map<Long, String> categories() {
+		return ajaxservice.getCategoryMap();
+    }
+	
 	@RequestMapping(value = "/checkEmail")
 	@ResponseBody
     public Map<String, Integer> checkEmail(@RequestParam(value="email", required=false) String email) {

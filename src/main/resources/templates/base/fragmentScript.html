@@ -123,6 +123,12 @@
 			})
 		});
 		
+		$.post( "/util/getCategoryMap", function( data ) {
+			$.each(data, function(key, value){
+		        $(".getCategories").append('<option value="'+ key +'">'+ value +'</option>')
+			})
+		});
+		
 		$("#addLoyaltyPoints").click(function() {
 			$getloyaltyPoints = $('.getloyaltyPoints');
 			$getMemberships = $('.getMemberships');

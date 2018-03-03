@@ -80,11 +80,7 @@
 									<!-- Post -->
 									<div class = "row">
 										<div class="col-md-3">
-											<select class="form-control select2 servicesCatDropdown" style="width: 100%;">
-												<option selected="selected" >Select Category</option>
-												<option>John</option>
-												<option>Doe</option>
-												<option>Alexander</option>
+											<select class="form-control select2 getCategories" style="width: 100%;">
 											</select>
 											<div class="form-group">
 											</div>
@@ -387,41 +383,15 @@
 							<!-- /.tab-pane -->
 							<div class="tab-pane" id="staff">
 								<div class = "row md-col-12">
-								<div th:each="staff : ${staffMap}" th:remove="tag">
-									<div class = "md-col-3 displayInlineBlock">
-										<div class="checkbox icheck">
-										  <label>
-										    <input class="addservicestaffcheckboxInput" type="checkbox" th:text="' '+${staff.name}">
-										  </label>
+									<div th:each="staff : ${staffMap}" th:remove="tag">
+										<div class = "md-col-3 displayInlineBlock">
+											<div class="checkbox icheck">
+												<label>
+													<input class="addservicestaffcheckboxInput" type="checkbox" th:text="' '+${staff.name}">
+												</label>
+											</div>
 										</div>
 									</div>
-								</div>
-									
-									<!-- <div class = "md-col-4 displayInlineBlock">
-										<div class="checkbox icheck">
-										  <label>
-										    <input class="addservicestaffcheckboxInput" type="checkbox"> Staff 1
-										  </label>
-										</div>
-									
-									</div>
-									<div class = "md-col-4 displayInlineBlock">
-										<div class="checkbox icheck">
-										  <label>
-										    <input class="addservicestaffcheckboxInput" type="checkbox"> Staff 1
-										  </label>
-										</div>
-									
-									</div>
-								
-									<div class = "md-col-4 displayInlineBlock">
-										<div class="checkbox icheck">
-										  <label>
-										    <input class="addservicestaffcheckboxInput" type="checkbox"> Staff 4
-										  </label>
-										</div>
-									
-									</div> -->
 								</div>
 							</div>
 							<!-- /.tab-pane -->
