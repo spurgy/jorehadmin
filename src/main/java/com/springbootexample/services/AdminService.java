@@ -3,6 +3,7 @@ package com.springbootexample.services;
 import com.springbootexample.model.Category;
 import com.springbootexample.model.Duration;
 import com.springbootexample.model.Membership;
+import com.springbootexample.pojo.ServiceDetails;
 import com.springbootexample.pojo.StaffDetails;
 
 public interface AdminService {
@@ -13,5 +14,7 @@ public interface AdminService {
 	public void saveMember(Membership membership);
 	
 	public void saveCategory(Category category);
+	
+	public void saveService(ServiceDetails serviceDetails);
 	
 }

@@ -15,7 +15,7 @@ public class Membership extends TimeStampClass {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="membership_id")
-	private int id;
+	private Long id;
 	
 	@Column(name="membership_name")
 	private String name;
@@ -27,11 +27,11 @@ public class Membership extends TimeStampClass {
 	@JoinColumn(name="duration_id")
 	private Duration duration;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

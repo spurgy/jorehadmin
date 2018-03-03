@@ -8,5 +8,8 @@ import com.springbootexample.model.User;
 
 @Repository("userRepository")
 public interface UserRepository extends JpaRepository<User, Long> {
+	
 	 User findByEmail(String email);
+	 
+	 public long count();
 }

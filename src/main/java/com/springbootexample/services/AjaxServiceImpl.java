@@ -10,11 +10,13 @@ import org.springframework.stereotype.Service;
 import com.springbootexample.dao.CategoryRepository;
 import com.springbootexample.dao.DesignationRepository;
 import com.springbootexample.dao.DurationRepository;
+import com.springbootexample.dao.GenderRepository;
 import com.springbootexample.dao.MembershipRepository;
 import com.springbootexample.dao.StaffRepository;
 import com.springbootexample.model.Category;
 import com.springbootexample.model.Designation;
 import com.springbootexample.model.Duration;
+import com.springbootexample.model.Gender;
 import com.springbootexample.model.Membership;
 import com.springbootexample.model.Staff;
 
@@ -37,28 +39,31 @@ public class AjaxServiceImpl implements AjaxService{
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
+	@Autowired
+	private GenderRepository genderRepository;
+
 	@Override
 	public Map<Integer, String> getAllDesignations(){
 		Map<Integer, String> designations= new HashMap<Integer, String>();
 		for(Designation designation : designationrepository.findAll()) {
-			designations.put(designation.getId(), designation.getName());
+			designations.put(designation.getId().intValue(), designation.getName());
 		}
 		return designations;
 	}
 	
 	@Override
 	public List<Staff> getAllStaff(){
-		return (List<Staff>) staffrepository.findAll();
+		return staffrepository.findAll();
 	}
 
 	@Override
 	public List<Duration> getAllDuration() {
-		return (List<Duration>)durationRepository.findAll();
+		return durationRepository.findAll();
 	}
 	
 	@Override
 	public List<Membership> getAllMembership() {
-		return (List<Membership>)membershipRepository.findAll();
+		return membershipRepository.findAll();
 	}
 	
 	@Override
@@ -66,7 +71,7 @@ public class AjaxServiceImpl implements AjaxService{
 		Map<Integer, String> memberships= new HashMap<Integer, String>();
 		memberships.put(0, "Select Membership Type");
 		for(Membership membership : membershipRepository.findAll()) {
-			memberships.put(membership.getId(), membership.getName());
+			memberships.put(membership.getId().intValue(), membership.getName());
 		}
 		return memberships;
 	}
@@ -83,17 +88,25 @@ public class AjaxServiceImpl implements AjaxService{
 	
 	@Override
 	public List<Category> getCategoryList(){
-		return (List<Category>)categoryRepository.findAll();
+		return categoryRepository.findAll();
 	}
 
 	@Override
 	public Map<Long, String> getCategoryMap() {
-		// TODO Auto-generated method stub
 		Map<Long, String> categories= new HashMap<Long, String>();
 		categories.put( 0L, "Select Category");
 		for(Category category : categoryRepository.findAll()) {
 			categories.put(category.getId(), category.getName());
 		}
 		return categories;
+	}
+
+	@Override
+	public Map<Integer, String> getGenderMap() {
+		Map<Integer, String> genders= new HashMap<Integer, String>();
+		for(Gender gender : genderRepository.findAll()) {
+			genders.put(gender.getId().intValue(), gender.getName());
+		}
+		return genders;
 	}
 }

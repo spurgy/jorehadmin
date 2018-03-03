@@ -24,4 +24,6 @@ public interface AjaxService {
 	public List<Category> getCategoryList();
 
 	public Map<Long, String> getCategoryMap();
+
+	public Map<Integer, String> getGenderMap();
 }

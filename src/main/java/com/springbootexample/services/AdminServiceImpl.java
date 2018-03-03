@@ -2,6 +2,7 @@ package com.springbootexample.services;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,13 +13,16 @@ import com.springbootexample.dao.DesignationRepository;
 import com.springbootexample.dao.DurationRepository;
 import com.springbootexample.dao.MembershipRepository;
 import com.springbootexample.dao.RoleRepository;
+import com.springbootexample.dao.ServiceRepository;
 import com.springbootexample.dao.StaffRepository;
 import com.springbootexample.model.Category;
 import com.springbootexample.model.Duration;
+import com.springbootexample.model.LoyaltyPoints;
 import com.springbootexample.model.Membership;
 import com.springbootexample.model.Role;
 import com.springbootexample.model.Staff;
 import com.springbootexample.model.User;
+import com.springbootexample.pojo.ServiceDetails;
 import com.springbootexample.pojo.StaffDetails;
 
 
@@ -39,6 +43,8 @@ public class AdminServiceImpl implements AdminService{
     private MembershipRepository membershipRepository;
 	@Autowired
     private CategoryRepository categoryRepository;
+	@Autowired
+    private ServiceRepository serviceRepository;
 	
 	public void saveStaffDetails(StaffDetails staffDetails) {
 		Staff staff = new Staff();
@@ -84,5 +90,27 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public void saveCategory(Category category) {
 		categoryRepository.save(category);
+	}
+	
+	@Override
+	public void saveService(ServiceDetails serviceDetails) {
+		com.springbootexample.model.Service service = new com.springbootexample.model.Service();
+		service.setCategory(serviceDetails.getCatId());
+		service.setDuration(serviceDetails.getDuration());
+		service.setGender(serviceDetails.getAvailability());
+		service.setName(serviceDetails.getServiceName());
+		service.setPrice(serviceDetails.getPrice());
+		Set<LoyaltyPoints> loyaltyPoints = new HashSet<LoyaltyPoints>();
+		String[] memberIds = serviceDetails.getMembership().split(",");
+		String[] points = serviceDetails.getPoints().split(",");
+		for(int i = 0; i < memberIds.length; i++) {
+			LoyaltyPoints loyaltyPoint = new LoyaltyPoints();
+			loyaltyPoint.setMembership(membershipRepository.findById(Long.valueOf(memberIds[i])));
+			loyaltyPoint.setPoints(Double.valueOf(points[i]));
+			loyaltyPoints.add(loyaltyPoint);
+		}
+		service.setLoyaltyPoints(loyaltyPoints);
+		service.setStaffList(serviceDetails.getStaff());
+		serviceRepository.save(service);
 	}
 }

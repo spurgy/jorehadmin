@@ -129,6 +129,15 @@
 			})
 		});
 		
+		$.post( "/util/getGenderMap", function( data ) {
+			$.each(data, function(key, value){
+		        $(".getGender").append('<option value="'+ key +'">'+ value +'</option>')
+			})
+		});
+		
+		var loyaltyPointsMemberShip = new Array();
+		var loyaltyPoints = new Array();
+		
 		$("#addLoyaltyPoints").click(function() {
 			$getloyaltyPoints = $('.getloyaltyPoints');
 			$getMemberships = $('.getMemberships');
@@ -136,20 +145,35 @@
 				$('.loyaltyPointsTable').append(
 					'<tr id="'+$getMemberships.val()+'"><td>'+$getMemberships.val()+'</td><td>'+$getMemberships.find("option:selected").text()+'</td><td>'+$getloyaltyPoints.val()+'</td><td><button type="button" class="btn btn-link btnDeleteloyaltyPointsTableRow" data-toggle="tooltip" data-id="'+$getMemberships.val()+'" title="remove"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td></tr>'
 				);
+				loyaltyPointsMemberShip.push($getMemberships.val());
+				loyaltyPoints.push($getloyaltyPoints.val());
+				$('.loyalPointsMembership').val(loyaltyPointsMemberShip);
+				$('.loyalPointsPoints').val(loyaltyPoints);
 			} else {
 				alert("Please enter the valid Data");
 			}
-			$getloyaltyPoints.val("");
-			$getMemberships.val("");
+			cleanLoyaltyPoints();
 		});
 		
 		$(document).on("click", ".btnDeleteloyaltyPointsTableRow", function() {
+			var index = loyaltyPointsMemberShip.indexOf($(this).data('id').toString());
+			loyaltyPointsMemberShip.splice(index,1);
+			loyaltyPoints.splice(index,1);
+			$('.loyalPointsMembership').val(loyaltyPointsMemberShip);
+			$('.loyalPointsPoints').val(loyaltyPoints);
 			var tr = '#'+$(this).data('id');
 			$(tr).remove();
 		});
 		
+		function cleanLoyaltyPoints(){
+			$('.getloyaltyPoints').val("");
+			$('.getMemberships').val("0").change();
+		}
+
 		$(document).on("click", ".addServiceToCat", function() {
-			$(".serviceCatId").val($(this).val()+" ("+$(this).data('name')+")");
+			$(".serviceCatId").val($(this).val());
+			cleanLoyaltyPoints();
+			$('.loyaltyPointsTable').html("");
 			$("#servcesAddtoCatModal").modal({backdrop: "static"});
 			$("#servcesAddtoCatModal").modal('show');
 		});

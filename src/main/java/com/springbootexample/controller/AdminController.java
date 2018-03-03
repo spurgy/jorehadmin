@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.springbootexample.model.Category;
 import com.springbootexample.model.Duration;
 import com.springbootexample.model.Membership;
+import com.springbootexample.pojo.ServiceDetails;
 import com.springbootexample.pojo.StaffDetails;
 import com.springbootexample.services.AdminService;
 import com.springbootexample.services.AjaxService;
@@ -59,16 +60,22 @@ public class AdminController {
 	
 	@RequestMapping(value = "/services")
     public ModelAndView services(HttpServletRequest request, ModelAndView model,
-    		@ModelAttribute Category category) {
+    		@ModelAttribute Category category,
+    		@ModelAttribute ServiceDetails serviceDetails,
+    		@RequestParam(value="addMethod", required=false) String addMethod) {
 		model.addObject("view", "services");
 		if(request.getMethod().matches("GET")) {
 			model.setViewName("/base/base");
+			model.addObject("serviceDetails", new ServiceDetails());
 			model.addObject("categoryObject", new Category());
 			model.addObject("staffMap", ajaxservice.getAllStaff());
 			return model;
 		}
-		if(category != null) {
+		if(category != null && "addCategory".equals(addMethod)) {
 			adminService.saveCategory(category);
+		}
+		if(serviceDetails != null && "addService".equals(addMethod)) {
+			adminService.saveService(serviceDetails);
 		}
 		return new ModelAndView("redirect:/admin/services");
     }

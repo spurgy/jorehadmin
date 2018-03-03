@@ -8,4 +8,5 @@ import com.springbootexample.model.Membership;
 
 @Repository("membershipRepository")
 public interface MembershipRepository extends JpaRepository<Membership, Long> {
+	Membership findById(Long id);
 }

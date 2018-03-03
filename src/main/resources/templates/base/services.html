@@ -1,28 +1,28 @@
 <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" >
-    <!-- Content Header (Page header) -->
-	<br/><br/>
-    <section class="content-header">
-      <h1>
-        Services
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="../index2.html" th:href="@{/person/home}"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Services</li>
-      </ol>
-    </section>
+<div class="content-wrapper">
+	<!-- Content Header (Page header) -->
+	<br /> <br />
+	<section class="content-header">
+		<h1>Services</h1>
+		<ol class="breadcrumb">
+			<li><a href="../index2.html" th:href="@{/person/home}"><i
+					class="fa fa-dashboard"></i> Home</a></li>
+			<li class="active">Services</li>
+		</ol>
+	</section>
 
-    <!-- Main content -->
-    <section class="content">
-		<div class = "row">
-			<div class = "col-md-12">
+	<!-- Main content -->
+	<section class="content">
+		<div class="row">
+			<div class="col-md-12">
 				<div class="box box-primary">
 					<div class="box-header">
 						<div class="row">
 							<div class="col-md-3">
 								<h2></h2>
 								<div class="form-group">
-									<select class="form-control select2 servicesAddCPDdropdown" style="width: 100%;">
+									<select class="form-control select2 servicesAddCPDdropdown"
+										style="width: 100%;">
 										<option selected="selected">Select</option>
 										<option>Category</option>
 										<option>Package</option>
@@ -30,27 +30,37 @@
 									</select>
 								</div>
 							</div>
-							
+
 						</div>
-						  <div class="box-tools pull-right">
-							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-						  </div>
+						<div class="box-tools pull-right">
+							<button type="button" class="btn btn-box-tool"
+								data-widget="collapse">
+								<i class="fa fa-minus"></i>
+							</button>
+						</div>
 					</div>
 					<!-- /.box-header -->
-					<div class="box-body " >
-						<div class = "table-responsive no-padding">
-							
-							<table class="table table-bordered table-hover" id="servicesCPDtable" style="width: 100%;">
-								<thead id = "thead" >
-								 <tr>
-								 	  <th class="col-xs-3 center">Id</th>
-									  <th class="col-xs-3 center">Name</th>
-									  <th class="col-xs-3 center"></th>
-								 </tr>
+					<div class="box-body ">
+						<div class="table-responsive no-padding">
+
+							<table class="table table-bordered table-hover"
+								id="servicesCPDtable" style="width: 100%;">
+								<thead id="thead">
+									<tr>
+										<th class="col-xs-3 center">Id</th>
+										<th class="col-xs-3 center">Name</th>
+										<th class="col-xs-3 center">Actions</th>
+									</tr>
 								</thead>
 							</table>
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary btn-lg pull-right servicesAddCpdBtn" onclick="servicesAddBtn(this.value)" disabled style = "width: 50px;height: 50px;padding: 10px 16px;font-size: 18px;line-height: 1.33;border-radius: 25px;" data-toggle="tooltip" data-placement="left"><i class="fa fa-plus"></i></button>
+								<button type="submit"
+									class="btn btn-primary btn-lg pull-right servicesAddCpdBtn"
+									onclick="servicesAddBtn(this.value)" disabled
+									style="width: 50px; height: 50px; padding: 10px 16px; font-size: 18px; line-height: 1.33; border-radius: 25px;"
+									data-toggle="tooltip" data-placement="left">
+									<i class="fa fa-plus"></i>
+								</button>
 							</div>
 						</div>
 					</div>
@@ -59,184 +69,192 @@
 			</div>
 
 		</div>
-	  <div class="row">
-        <div class="col-xs-12">
-          <div class="box box-primary">
-            <div class="box-header">
-              <h3 class="box-title"></h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="nav-tabs-custom">
-							<ul class="nav nav-tabs">
-								<li class="active"><a href="#services_services" data-toggle="tab">Services</a></li>
-								<li><a href="#services_packages" data-toggle="tab">Packages</a></li>
-								<li><a href="#services_Dd" data-toggle="tab">Deals and Discounts</a></li>
-							</ul>
-							<div class="tab-content">
-								<div class="active tab-pane" id="services_services">
-									<!-- Post -->
-									<div class = "row">
-										<div class="col-md-3">
-											<select class="form-control select2 getCategories" style="width: 100%;">
-											</select>
-											<div class="form-group">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="box box-primary">
+					<div class="box-header">
+						<h3 class="box-title"></h3>
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="nav-tabs-custom">
+									<ul class="nav nav-tabs">
+										<li class="active"><a href="#services_services"
+											data-toggle="tab">Services</a></li>
+										<li><a href="#services_packages" data-toggle="tab">Packages</a></li>
+										<li><a href="#services_Dd" data-toggle="tab">Deals
+												and Discounts</a></li>
+									</ul>
+									<div class="tab-content">
+										<div class="active tab-pane" id="services_services">
+											<!-- Post -->
+											<div class="row">
+												<div class="col-md-3">
+													<select class="form-control select2 getCategories"
+														style="width: 100%;">
+													</select>
+													<div class="form-group"></div>
+												</div>
 											</div>
-										</div>
-									</div>
-									<div class="table-responsive no-padding">
-										<table id="servicesServiceTable" class="table table-bordered table-hover">
-											<thead>
-											<tr>
-											  <th>Name</th>
-											  <th>Duration</th>
-											  <th>Price</th>
-											</tr>
-											</thead>
-											<tbody>
-												<tr>
-												  <td>Trident</td>
-												  <td> 4</td>
-												  <td>300</td>
-												</tr>
-												<tr>
-												  <td>Trident</td>
-												  <td>5</td>
-												  <td>200</td>
-												</tr>
-												<tr>
-												  <td>Trident</td>
-												  <td>5</td>
-												  <td>400</td>
-												</tr>
-												<tr>
-												  <td>Trident</td>
-												  <td>6</td>
-												  <td>100</td>
-												</tr>
-												<tr>
-												  <td>Trident</td>
-												  <td>7</td>
-												  <td>500</td>
-												</tr>
-												<tr>
-												  <td>Trident</td>
-												  <td>6</td>
-												  <td>250</td>
-												</tr>
-												<tr>
-												  <td>Gecko</td>
-												  <td>1</td>
-												  <td>430</td>
-												</tr>
-												
-											</tbody>
-											<tfoot>
-												<tr>
-												  <th></th>
-												  <th>Browser</th>
-												  <th></th>
-												</tr>
-											</tfoot>
-										</table>
-										
-									</div>
-								</div>	
-								<div class="tab-pane" id="services_packages">
-									<div class = "row">
-										<div class="col-md-3">
-											<select class="form-control select2 servicesPacDropdown" style="width: 100%;">
-												<option selected="selected" >Select Package</option>
-												<option>John</option>
-												<option>Doe</option>
-												<option>Alexander</option>
-											</select>
-											<div class="form-group">
-											</div>
-										</div>
-									</div>
-									<div class="table-responsive no-padding">
-											<table id="servicesPackagesTable" class="table table-bordered table-hover">
-												<thead>
-												<tr>
-												  <th class="col-md-6">Name</th>
-												  <th class="col-md-6">Duration</th>
-												</tr>
-												</thead>
-												<tbody>
-												<tr>
-												  <td>Trident</td>
-												  <td> 4</td>
-												</tr>
-												<tr>
-												  <td>Trident</td>
-												  <td>5</td>
-												</tr>
-												<tr>
-												  <td>Trident</td>
-												  <td>5</td>
-												</tr>
-												<tr>
-												  <td>Trident</td>
-												  <td>6</td>
-												</tr>
-												<tr>
-												  <td>Trident</td>
-												  <td>7</td>
-												</tr>
-												<tr>
-												  <td>Trident</td>
-												  <td>6</td>
-												</tr>
-												<tr>
-												  <td>Gecko</td>
-												  <td>1</td>
-												</tr>
-												</tbody>
-											 </table>
-											 <h3>Price : 1500</h3>
-									</div>
-								</div>	
-								<div class="tab-pane" id="services_Dd">
-									<div class = "row">
-										<div class="col-md-3">
-											<select class="form-control select2 servicesDbDropdown" style="width: 100%;">
-												<option selected="selected" >Select Deals and Discounts</option>
-												<option>John</option>
-												<option>Doe</option>
-												<option>Alexander</option>
-											</select>
-											<div class="form-group">
-											</div>
-										</div>
-									</div>
+											<div class="table-responsive no-padding">
+												<table id="servicesServiceTable"
+													class="table table-bordered table-hover">
+													<thead>
+														<tr>
+															<th>Name</th>
+															<th>Duration</th>
+															<th>Price</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>Trident</td>
+															<td>4</td>
+															<td>300</td>
+														</tr>
+														<tr>
+															<td>Trident</td>
+															<td>5</td>
+															<td>200</td>
+														</tr>
+														<tr>
+															<td>Trident</td>
+															<td>5</td>
+															<td>400</td>
+														</tr>
+														<tr>
+															<td>Trident</td>
+															<td>6</td>
+															<td>100</td>
+														</tr>
+														<tr>
+															<td>Trident</td>
+															<td>7</td>
+															<td>500</td>
+														</tr>
+														<tr>
+															<td>Trident</td>
+															<td>6</td>
+															<td>250</td>
+														</tr>
+														<tr>
+															<td>Gecko</td>
+															<td>1</td>
+															<td>430</td>
+														</tr>
 
+													</tbody>
+													<tfoot>
+														<tr>
+															<th></th>
+															<th>Browser</th>
+															<th></th>
+														</tr>
+													</tfoot>
+												</table>
+
+											</div>
+										</div>
+										<div class="tab-pane" id="services_packages">
+											<div class="row">
+												<div class="col-md-3">
+													<select class="form-control select2 servicesPacDropdown"
+														style="width: 100%;">
+														<option selected="selected">Select Package</option>
+														<option>John</option>
+														<option>Doe</option>
+														<option>Alexander</option>
+													</select>
+													<div class="form-group"></div>
+												</div>
+											</div>
+											<div class="table-responsive no-padding">
+												<table id="servicesPackagesTable"
+													class="table table-bordered table-hover">
+													<thead>
+														<tr>
+															<th class="col-md-6">Name</th>
+															<th class="col-md-6">Duration</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>Trident</td>
+															<td>4</td>
+														</tr>
+														<tr>
+															<td>Trident</td>
+															<td>5</td>
+														</tr>
+														<tr>
+															<td>Trident</td>
+															<td>5</td>
+														</tr>
+														<tr>
+															<td>Trident</td>
+															<td>6</td>
+														</tr>
+														<tr>
+															<td>Trident</td>
+															<td>7</td>
+														</tr>
+														<tr>
+															<td>Trident</td>
+															<td>6</td>
+														</tr>
+														<tr>
+															<td>Gecko</td>
+															<td>1</td>
+														</tr>
+													</tbody>
+												</table>
+												<h3>Price : 1500</h3>
+											</div>
+										</div>
+										<div class="tab-pane" id="services_Dd">
+											<div class="row">
+												<div class="col-md-3">
+													<select class="form-control select2 servicesDbDropdown"
+														style="width: 100%;">
+														<option selected="selected">Select Deals and
+															Discounts</option>
+														<option>John</option>
+														<option>Doe</option>
+														<option>Alexander</option>
+													</select>
+													<div class="form-group"></div>
+												</div>
+											</div>
+
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
+						<!-- /.box-body -->
 					</div>
-				</div>	
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        </div>
-      </div>
-    </section>
-    <!-- /.content -->
-  </div>
-  
-	<!--- Modals  --->
-	<!-- Add CPD Modal -->
-	<div class="modal fade" id="servicesAddCPDmodal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-			<form th:action="@{/admin/services}" th:object="${categoryObject}" method="post">
+					<!-- /.box -->
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /.content -->
+</div>
+
+<!--- Modals  --->
+<!-- Add CPD Modal -->
+<div class="modal fade" id="servicesAddCPDmodal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form th:action="@{/admin/services}" th:object="${categoryObject}"
+				method="post">
 				<div class="modal-header text-center">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					  <span aria-hidden="true">&times;</span></button>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
 					<h4 class="modal-title" id="servicesaddCPDmodalTitle"></h4>
 				</div>
 				<div class="modal-body">
@@ -244,112 +262,128 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="form-group  center-block">
-								  <label id="servicesaddCPDmodalLabel"></label>
-								  <input type="text" name="name" class="form-control" id="servicesaddCPDmodalinput"/>
+								<label id="servicesaddCPDmodalLabel"></label> <input
+									type="hidden" name="addMethod" value="addCategory" /> <input
+									type="text" name="name" class="form-control"
+									id="servicesaddCPDmodalinput" />
 							</div>
 						</div>
 						<!-- /.col -->
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default pull-left servicesaddCPDmodalDeleteBtn" data-dismiss="modal" >Delete</button>
-					<button type="button" class="btn btn-default " data-dismiss="modal" >Close</button>
-					<button type="submit" class="btn btn-primary servicesaddCPDmodalSaveBtn" >Save</button>
+					<button type="button"
+						class="btn btn-default pull-left servicesaddCPDmodalDeleteBtn"
+						data-dismiss="modal">Delete</button>
+					<button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+					<button type="submit"
+						class="btn btn-primary servicesaddCPDmodalSaveBtn">Save</button>
 				</div>
 			</form>
-			</div>
-		<!-- /.modal-content -->
 		</div>
-          <!-- /.modal-dialog -->
+		<!-- /.modal-content -->
 	</div>
-	
-	<!-- Add Service Modal -->
-	<div class="modal fade" id="servcesAddtoCatModal">
-	  <div class="modal-dialog modal-lg">
-		<div class="modal-content">
-		  <div class="modal-header text-center">
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			  <span aria-hidden="true">&times;</span></button>
-			<h4 class="modal-title">Add Service</h4>
-		  </div>
-		  <div class="modal-body">
-			<!--<p>One fine body&hellip;</p>-->
-				<div class="col-md-12">
-					<div class="nav-tabs-custom">
-						<ul class="nav nav-tabs">
-							<li class="active"><a href="#details" data-toggle="tab">Details</a></li>
-							<li><a href="#staff" data-toggle="tab">Staff</a></li>
-							<li><a href="#settings" data-toggle="tab">Settings</a></li>
-						</ul>
-						<div class="tab-content">
-							<div class="active tab-pane" id="details">
-								<!-- Post -->
-								<div class="row">
-									<div class="col-md-4">
-										<div class="form-group  center-block">
-											  <label>Category Id :</label>
-											  <input type="text" class="form-control serviceCatId" disabled placeholder="Enter Category Name"/>
-										</div>
-										
-										<div class="form-group  center-block">
-											  <label>Service Name :</label>
-											  <input type="text" class="form-control" placeholder="Enter Service Name"/>
-										</div>
-										
-										<div class="form-group">
-											<label>Available For :</label>
-											<select class="form-control select2" style="width: 100%;">
-												<option>Males Only</option>
-												<option>Females Only</option>
-												<option selected="selected" >Everyone</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="form-group">
-											<label>Duration :</label>
-											<select class="form-control select2" id="getDuration" style="width: 100%;">
-											</select>
-										</div>
-										
-										<div class="form-group  center-block">
-											  <label>Price :</label>
-											  <input type="text" class="form-control" placeholder="0.00"/>
-										</div>
-										
-									</div>
-									
-									<div class="col-md-4">
-										<div class="form-group  center-block">
-											  <label>Loyalty Points :</label>
-												<select class="form-control select2 getMemberships" style="width: 100%;">
-												</select>
-											  <input type="number" class="form-control getloyaltyPoints" placeholder="Enter Loyalty Points eg. 10">
-										</div>
-										<button type="button" class="btn btn-primary center-block" id="addLoyaltyPoints">Add</button>
-									</div>
-									<div class="col-md-5">
-										<div class="box box-primary">
-											<div class="box-header">
-											  <h3 class="box-title">Loyalty Points</h3>
+	<!-- /.modal-dialog -->
+</div>
 
-											  <div class="box-tools pull-right">
-													<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-											  </div>
+<!-- Add Service Modal -->
+<div class="modal fade" id="servcesAddtoCatModal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<form th:action="@{/admin/services}" th:method="post"
+				th:object="${serviceDetails}">
+				<input type="hidden" name="addMethod" value="addService">
+				<div class="modal-header text-center">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Add Service</h4>
+				</div>
+				<div class="modal-body">
+					<!--<p>One fine body&hellip;</p>-->
+					<div class="col-md-12">
+						<div class="nav-tabs-custom">
+							<ul class="nav nav-tabs">
+								<li class="active"><a href="#details" data-toggle="tab">Details</a></li>
+								<li><a href="#staff" data-toggle="tab">Staff</a></li>
+								<li><a href="#settings" data-toggle="tab">Settings</a></li>
+							</ul>
+							<div class="tab-content">
+								<div class="active tab-pane" id="details">
+									<!-- Post -->
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group  center-block">
+												<label>Category Id :</label> <input type="text" name="catId"
+													class="form-control serviceCatId" readonly="readonly" />
 											</div>
-											<!-- /.box-header -->
-											<div class="box-body no-padding">
-											  <table class="table table-hover">
-												<thead>
-													<tr>
-													  <th>Mem.Id</th>
-													  <th>Name</th>
-													  <th>Points</th>
-													  <th>Actions</th>    
-												    </tr>              
-												</thead>
-												<tbody class="loyaltyPointsTable">
-												<!-- <tr>
+
+											<div class="form-group  center-block">
+												<label>Service Name :</label> <input type="text"
+													name="serviceName" class="form-control"
+													placeholder="Enter Service Name" />
+											</div>
+
+											<div class="form-group">
+												<label>Available For :</label> <select name="availability"
+													class="form-control select2 getGender" style="width: 100%;">
+												</select>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label>Duration :</label> <select name="duration"
+													class="form-control select2" id="getDuration"
+													style="width: 100%;">
+												</select>
+											</div>
+
+											<div class="form-group  center-block">
+												<label>Price :</label> <input type="text" name="price"
+													class="form-control" placeholder="0.00" />
+											</div>
+
+										</div>
+
+										<div class="col-md-4">
+										<input type="hidden" class="loyalPointsMembership" name="membership"/>
+										<input type="hidden" class="loyalPointsPoints" name="points"/>
+											<div class="form-group  center-block">
+												<label>Loyalty Points :</label> <select
+													class="form-control select2 getMemberships"
+													style="width: 100%;">
+												</select> <input type="number" class="form-control getloyaltyPoints"
+													placeholder="Enter Loyalty Points eg. 10" />
+											</div>
+											<button type="button" class="btn btn-primary center-block"
+												id="addLoyaltyPoints">Add</button>
+										</div>
+										<div class="col-md-5">
+											<div class="box box-primary">
+												<div class="box-header">
+													<h3 class="box-title">Loyalty Points</h3>
+
+													<div class="box-tools pull-right">
+														<button type="button" class="btn btn-box-tool"
+															data-widget="collapse">
+															<i class="fa fa-minus"></i>
+														</button>
+													</div>
+												</div>
+												<!-- /.box-header -->
+												<div class="box-body no-padding">
+													<table class="table table-hover">
+														<thead>
+															<tr>
+																<th>Mem.Id</th>
+																<th>Name</th>
+																<th>Points</th>
+																<th>Actions</th>
+															</tr>
+														</thead>
+														<tbody class="loyaltyPointsTable">
+															<!-- <tr>
 												  <td>1</td>
 												  <td>Diamond</td>
 												  <td>11</td>
@@ -370,47 +404,48 @@
 												  <td><button type="button" class="btn btn-link" data-toggle="tooltip" title="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
 												  <td><button type="button" class="btn btn-link" data-toggle="tooltip" title="remove"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
 												</tr> -->
-												</tbody>
-											  </table>
-											</div>
-											<!-- /.box-body -->
-										</div>
-									</div>
-									<!-- /.col -->
-								</div>
-								<!-- /.post -->
-							</div>
-							<!-- /.tab-pane -->
-							<div class="tab-pane" id="staff">
-								<div class = "row md-col-12">
-									<div th:each="staff : ${staffMap}" th:remove="tag">
-										<div class = "md-col-3 displayInlineBlock">
-											<div class="checkbox icheck">
-												<label>
-													<input class="addservicestaffcheckboxInput" type="checkbox" th:text="' '+${staff.name}">
-												</label>
+														</tbody>
+													</table>
+												</div>
+												<!-- /.box-body -->
 											</div>
 										</div>
+										<!-- /.col -->
+									</div>
+									<!-- /.post -->
+								</div>
+								<!-- /.tab-pane -->
+								<div class="tab-pane" id="staff">
+									<div class="row md-col-12">
+										<div th:each="staff : ${staffMap}" th:remove="tag">
+											<div class="md-col-3 displayInlineBlock">
+												<div class="checkbox icheck">
+													<label> <input class="addservicestaffcheckboxInput"
+														type="checkbox" name="staff" th:value="${staff.id}"
+														th:text="' '+${staff.name}">
+													</label>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
+								<!-- /.tab-pane -->
+								<div class="tab-pane" id="settings"></div>
+								<!-- /.tab-pane -->
 							</div>
-							<!-- /.tab-pane -->
-							<div class="tab-pane" id="settings">
-								
-							</div>
-							<!-- /.tab-pane -->
+							<!-- /.tab-content -->
 						</div>
-						<!-- /.tab-content -->
+						<!-- /.nav-tabs-custom -->
 					</div>
-					<!-- /.nav-tabs-custom -->
 				</div>
-		  </div>
-		  <div class="modal-footer">
-			<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-primary addServiceSaveBtn" data-dismiss="modal">Save</button>
-		  </div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default pull-left"
+						data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary addServiceSaveBtn">Save</button>
+				</div>
+			</form>
 		</div>
 		<!-- /.modal-content -->
-	  </div>
-	  <!-- /.modal-dialog -->
 	</div>
+	<!-- /.modal-dialog -->
+</div>

@@ -7,6 +7,6 @@ import com.springbootexample.model.Role;
 
 
 @Repository("roleRepository")
-public interface RoleRepository extends JpaRepository<Role, Integer>{
+public interface RoleRepository extends JpaRepository<Role, Long>{
 	Role findByRole(String role);
 }
