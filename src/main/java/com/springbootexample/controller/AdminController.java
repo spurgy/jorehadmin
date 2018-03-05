@@ -68,7 +68,7 @@ public class AdminController {
 			model.setViewName("/base/base");
 			model.addObject("serviceDetails", new ServiceDetails());
 			model.addObject("categoryObject", new Category());
-			model.addObject("staffMap", ajaxservice.getAllStaff());
+			model.addObject("staffMap", ajaxservice.getAllStaffList());
 			return model;
 		}
 		if(category != null && "addCategory".equals(addMethod)) {

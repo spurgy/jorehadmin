@@ -11,7 +11,9 @@ import com.springbootexample.model.Staff;
 public interface AjaxService {
 	public Map<Integer, String> getAllDesignations();
 	
-	public List<Staff> getAllStaff();
+	public List<Staff> getAllStaffList();
+	
+	public Map<Integer, String> getAllStaffMap();
 	
 	public List<Duration> getAllDuration();
 	
@@ -26,4 +28,6 @@ public interface AjaxService {
 	public Map<Long, String> getCategoryMap();
 
 	public Map<Integer, String> getGenderMap();
+	
+	public Map<Integer, String> getServiceMap();
 }

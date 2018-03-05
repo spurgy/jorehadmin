@@ -7,6 +7,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.springbootexample.dao.CategoryRepository;
 import com.springbootexample.dao.DesignationRepository;
@@ -103,11 +104,13 @@ public class AdminServiceImpl implements AdminService{
 		Set<LoyaltyPoints> loyaltyPoints = new HashSet<LoyaltyPoints>();
 		String[] memberIds = serviceDetails.getMembership().split(",");
 		String[] points = serviceDetails.getPoints().split(",");
-		for(int i = 0; i < memberIds.length; i++) {
-			LoyaltyPoints loyaltyPoint = new LoyaltyPoints();
-			loyaltyPoint.setMembership(membershipRepository.findById(Long.valueOf(memberIds[i])));
-			loyaltyPoint.setPoints(Double.valueOf(points[i]));
-			loyaltyPoints.add(loyaltyPoint);
+		if(!StringUtils.isEmpty(memberIds[0])) {
+			for(int i = 0; i < memberIds.length; i++) {
+				LoyaltyPoints loyaltyPoint = new LoyaltyPoints();
+				loyaltyPoint.setMembership(membershipRepository.findById(Long.valueOf(memberIds[i])));
+				loyaltyPoint.setPoints(Double.valueOf(points[i]));
+				loyaltyPoints.add(loyaltyPoint);
+			}
 		}
 		service.setLoyaltyPoints(loyaltyPoints);
 		service.setStaffList(serviceDetails.getStaff());

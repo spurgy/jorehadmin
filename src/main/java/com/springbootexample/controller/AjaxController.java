@@ -51,7 +51,13 @@ public class AjaxController {
 	@RequestMapping(value = "/getStaffList")
 	@ResponseBody
     public List<Staff> getStaffDataTable() {
-		return ajaxservice.getAllStaff();
+		return ajaxservice.getAllStaffList();
+    }
+	
+	@RequestMapping(value = "/getStaffMap")
+	@ResponseBody
+    public Map<Integer, String> getStaffDataMap() {
+		return ajaxservice.getAllStaffMap();
     }
 	
 	@RequestMapping(value = "/getMembershipMap")
@@ -82,6 +88,12 @@ public class AjaxController {
 	@ResponseBody
     public Map<Integer, String> genders() {
 		return ajaxservice.getGenderMap();
+    }
+	
+	@RequestMapping(value = "/getServiceMap")
+	@ResponseBody
+    public Map<Integer, String> services() {
+		return ajaxservice.getServiceMap();
     }
 	
 	@RequestMapping(value = "/checkEmail")

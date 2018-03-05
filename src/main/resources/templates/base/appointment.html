@@ -23,6 +23,8 @@
 		<!-- /.box -->
 
 		<div class="box box-primary">
+		<form th:action="@{/person/appointment}" th:method="post" th:object="${appointment}">
+		<input type="hidden" name="addMethod" value="appointment"/>
 			<div class="box-header with-border">
 				<h3 class="box-title">Client Details</h3>
 
@@ -45,7 +47,7 @@
 								<div class="input-group-addon">
 									<i class="fa fa-phone"></i>
 								</div>
-								<input type="text" class="form-control"
+								<input type="text" class="form-control" name="phone"
 									data-inputmask="'mask': '(999) 999-9999'" id="maskfeild" data-mask="" />
 							</div>
 							<!-- /.input group -->
@@ -53,7 +55,7 @@
 						<!-- /.form group -->
 
 						<div class="form-group">
-							<label>Customer Name :</label> <input type="text"
+							<label>Customer Name :</label> <input type="text" name="customerName"
 								class="form-control" placeholder="Enter Customer Name" />
 						</div>
 					</div>
@@ -65,7 +67,7 @@
 								<label>Date:</label>
 								<div class="input-group">
 									<input type="text" class="form-control datepicker"
-										id="datepicker" />
+										id="datepicker" name="appointmentDate"/>
 									<div class="input-group-addon">
 										<i class="fa fa-calendar"></i>
 									</div>
@@ -80,7 +82,7 @@
 							<div class="form-group">
 								<label>Time :</label>
 								<div class="input-group">
-									<input type="text" class="form-control timepicker" />
+									<input type="text" name="appointmentTime" class="form-control timepicker" />
 									<div class="input-group-addon">
 										<i class="fa fa-clock-o"></i>
 									</div>
@@ -92,18 +94,7 @@
 
 						<div class="form-group">
 							<label>Service :</label> 
-							<select class="form-control select2" style="width: 100%;">
-								<option selected="selected">Select Service</option>
-								<option>Hair Care</option>
-								<option>Skin Care</option>
-								<option>Bridal Packages</option>
-								<option>Bridegroom Packages</option>
-								<option>Male Facial</option>
-								<option>Pedicure</option>
-								<option>Body Spa</option>
-								<option>Body Care</option>
-								<option>Mens Hair Wash</option>
-								<option>Men's Hair Style</option>
+							<select class="form-control select2 getService" name="service" style="width: 100%;">
 							</select>
 						</div>
 					</div>
@@ -111,21 +102,17 @@
 					<div class="col-md-4">
 						<!-- phone mask -->
 						<div class="form-group">
-							<label>Select Staff :</label> <select
-								class="form-control select2" style="width: 100%;">
-								<option selected="selected">Select Staff</option>
-								<option>John</option>
-								<option>Doe</option>
-								<option>Alexander</option>
+							<label>Select Staff :</label> <select name="staff"
+								class="form-control select2 getStaff" style="width: 100%;">
 							</select>
 						</div>
 						<!-- /.form group -->
 
 						<div class="form-group">
 							<label>Membership :</label> <select class="form-control select2"
-								style="width: 100%;">
-								<option selected="selected">No</option>
-								<option>Yes</option>
+								style="width: 100%;" name="hasMembership" >
+								<option value="false" selected="selected">No</option>
+								<option value="true">Yes</option>
 							</select>
 						</div>
 					</div>
@@ -140,6 +127,7 @@
 				<button type="submit" class="btn btn-info pull-right">Book
 					Appointment</button>
 			</div>
+			</form>
 		</div>
 		<div class="row">
 

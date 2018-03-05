@@ -1,19 +1,28 @@
 package com.springbootexample.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.springbootexample.dao.PersonRepository;
+import com.springbootexample.model.Appointment;
 import com.springbootexample.model.Person;
+import com.springbootexample.services.PersonService;
 
 
 @Controller
 @RequestMapping(value = "/person")
 public class PersonsController {
+	
+	@Autowired
+	private PersonService personService; 
 	
 	@Autowired
     private PersonRepository personDao;
@@ -25,9 +34,19 @@ public class PersonsController {
     }
 	
 	@RequestMapping(value = "/appointment")
-    public String appointment(Model model) {
-		model.addAttribute("view", "content");
-        return "/base/base";
+    public ModelAndView appointment(HttpServletRequest request, ModelAndView model,
+    		@ModelAttribute Appointment appointment,
+    		@RequestParam(value="addMethod", required=false) String addMethod) {
+		model.addObject("view", "appointment");
+		if(request.getMethod().matches("GET")) {
+			model.setViewName("/base/base");
+			model.addObject("appointment", new Appointment());
+			return model;
+		}
+		if(appointment != null && "appointment".equals(addMethod)) {
+			personService.saveAppointment(appointment);
+		}
+        return new ModelAndView("redirect:/person/appointment");
     }
 	
 	@RequestMapping(value = "/bill")

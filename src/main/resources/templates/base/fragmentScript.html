@@ -180,3 +180,19 @@
 	});
 	
 </script>
+<script th:fragment="appointment">
+	$(function () {
+		
+		$.post( "/util/getServiceMap", function( data ) {
+			$.each(data, function(key, value){
+		        $(".getService").append('<option value="'+ key +'">'+ value +'</option>')
+			})
+		});
+		
+		$.post( "/util/getStaffMap", function( data ) {
+			$.each(data, function(key, value){
+		        $(".getStaff").append('<option value="'+ key +'">'+ value +'</option>')
+			})
+		});
+	});
+</script>

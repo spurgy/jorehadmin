@@ -166,17 +166,17 @@ CREATE TABLE `service_staff` (
 `created` DATETIME NULL DEFAULT NULL ,
 `updated` DATETIME NULL DEFAULT NULL ) ENGINE = InnoDB;
 
-/*------------Update Code--------------------*/
-
-DROP TABLE IF EXISTS `apointment`;
-CREATE TABLE `apointment` (
+DROP TABLE IF EXISTS `appointment`;
+CREATE TABLE `appointment` (
 `apointment_id` INT NOT NULL AUTO_INCREMENT ,
-`apointment_date` DATE NOT NULL ,
-`apointment_time` TIME NOT NULL ,
-`apointment_client_phone` INT NOT NULL ,
-`apointment_client_name` VARCHAR(40) NOT NULL ,
+`appointment_phone` VARCHAR(15) NOT NULL ,
+`appointment_cust_name` VARCHAR(64) NOT NULL ,
+`appointment_date` DATE NOT NULL ,
+`appointment_time` VARCHAR(16) NOT NULL ,
+`appointment_service_id` INT NOT NULL ,
 `appointment_staff_id` INT NOT NULL ,
-`apointment_service_id` VARCHAR(30) NOT NULL ,
-`created` DATETIME NOT NULL ,
-`updated` DATETIME NOT NULL ,
+`appointment_has_membership` BOOLEAN NOT NULL ,
+`created` DATETIME NULL DEFAULT NULL ,
+`updated` DATETIME NULL DEFAULT NULL ,
 PRIMARY KEY (`apointment_id`)) ENGINE = InnoDB;
+

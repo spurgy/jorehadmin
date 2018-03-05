@@ -12,6 +12,7 @@ import com.springbootexample.dao.DesignationRepository;
 import com.springbootexample.dao.DurationRepository;
 import com.springbootexample.dao.GenderRepository;
 import com.springbootexample.dao.MembershipRepository;
+import com.springbootexample.dao.ServiceRepository;
 import com.springbootexample.dao.StaffRepository;
 import com.springbootexample.model.Category;
 import com.springbootexample.model.Designation;
@@ -41,6 +42,9 @@ public class AjaxServiceImpl implements AjaxService{
 	
 	@Autowired
 	private GenderRepository genderRepository;
+	
+	@Autowired
+	private ServiceRepository serviceRepository;
 
 	@Override
 	public Map<Integer, String> getAllDesignations(){
@@ -52,8 +56,18 @@ public class AjaxServiceImpl implements AjaxService{
 	}
 	
 	@Override
-	public List<Staff> getAllStaff(){
+	public List<Staff> getAllStaffList(){
 		return staffrepository.findAll();
+	}
+	
+	@Override
+	public Map<Integer, String> getAllStaffMap(){
+		Map<Integer, String> staffs= new HashMap<Integer, String>();
+		staffs.put(0, "Select Staff");
+		for(Staff staff : staffrepository.findAll()) {
+			staffs.put(staff.getId().intValue(), staff.getName());
+		}
+		return staffs;
 	}
 
 	@Override
@@ -108,5 +122,15 @@ public class AjaxServiceImpl implements AjaxService{
 			genders.put(gender.getId().intValue(), gender.getName());
 		}
 		return genders;
+	}
+	
+	@Override
+	public Map<Integer, String> getServiceMap() {
+		Map<Integer, String> services = new HashMap<Integer, String>();
+		services.put( 0, "Select Service");
+		for(com.springbootexample.model.Service service : serviceRepository.findAll()) {
+			services.put(service.getId().intValue(), service.getName());
+		}
+		return services;
 	}
 }
