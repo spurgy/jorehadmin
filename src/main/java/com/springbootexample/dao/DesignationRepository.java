@@ -8,5 +8,5 @@ import com.springbootexample.model.Designation;
 @Repository("designationRepository")
 public interface DesignationRepository extends JpaRepository<Designation, Long>{
 	Designation findByName(String name);
-	Designation findById(Integer id);
+	Designation findById(long id);
 }

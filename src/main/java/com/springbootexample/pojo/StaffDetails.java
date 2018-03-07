@@ -10,7 +10,7 @@ public class StaffDetails {
 	private Date staffJoiningDate;
 	private CommunicationAddress communicationAddress;
 	private CommunicationAddress permanentAddress;
-	private Integer staffDesignation;
+	private long staffDesignation;
 	private String staffPhoneNumber;
 	private String staffEmail;
 	
@@ -70,11 +70,11 @@ public class StaffDetails {
 		this.permanentAddress = permanentAddress;
 	}
 	
-	public Integer getStaffDesignation() {
+	public long getStaffDesignation() {
 		return staffDesignation;
 	}
 	
-	public void setStaffDesignation(Integer staffDesignation) {
+	public void setStaffDesignation(long staffDesignation) {
 		this.staffDesignation = staffDesignation;
 	}
 	
