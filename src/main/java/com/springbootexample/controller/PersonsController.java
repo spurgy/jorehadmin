@@ -22,7 +22,7 @@ import com.springbootexample.services.PersonService;
 public class PersonsController {
 	
 	@Autowired
-	private PersonService personService; 
+	private PersonService personService;
 	
 	@Autowired
     private PersonRepository personDao;
@@ -30,7 +30,8 @@ public class PersonsController {
 	@RequestMapping(value = "/home")
     public String dashboard(Model model) {
 		model.addAttribute("view", "dashboard");
-        return "/base/base";
+        //return "/base/base";
+        return "/base";
     }
 	
 	@RequestMapping(value = "/appointment")

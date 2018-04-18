@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Admin | Appointment</title>
+<!-- Tell the browser to be responsive to screen width -->
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport"></meta>
+<meta th:replace="/base/csslines"></meta>
+</head>
+<body class="hold-transition skin-blue sidebar-mini" sec:authorize="isAuthenticated()">
+	<!-- wrapper -->
+	<div class="wrapper">
+
+		<div th:replace="/base/topheader"></div>
+
+		<div th:replace="/base/leftsidenav"></div>
+
+		<div th:replace="${'/base/' + view }"></div>
+
+		<div th:replace="/base/footer"></div>
+
+		<div th:replace="/base/contentslider"></div>
+
+	</div>
+	<!-- ./wrapper -->
+	<div th:replace="/base/jslines"></div>
+	
+</body>
+<script th:replace="/base/fragmentScript :: ${view}">
+
+</script>
+
+</html>
