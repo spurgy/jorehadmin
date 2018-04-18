@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.springbootexample.model.Category;
 import com.springbootexample.model.Duration;
 import com.springbootexample.model.Membership;
+import com.springbootexample.model.Service;
 import com.springbootexample.model.Staff;
 import com.springbootexample.model.User;
 import com.springbootexample.services.AjaxService;
@@ -76,6 +77,12 @@ public class AjaxController {
 	@ResponseBody
     public List<Category> getCategoryList() {
 		return ajaxservice.getCategoryList();
+    }
+	
+	@RequestMapping(value = "/getCatServicesList")
+	@ResponseBody
+    public List<Service> getCatServicesList() {
+		return ajaxservice.getCatServicesList();
     }
 	
 	@RequestMapping(value = "/getCategoryMap")

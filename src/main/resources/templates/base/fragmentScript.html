@@ -92,24 +92,59 @@
 		});
 	});
 </script>
-<script th:fragment="services">
-
-	durationDatatable = $('#servicesCPDtable').DataTable({
-		"sAjaxSource": "/util/getCategoryList",
-		"sAjaxDataProp": "",
-		"asStripeClasses": [ 'strip1', 'strip2', 'strip3', 'strip4', 'strip5' ],
-		"order": [[ 0, "asc" ]],
-		"aoColumns": [
-		      { "mData": "id"},
-	          { "mData": "name" },
-	          { "mData": null,
-	             "bSortable": false,
-	             "mRender": function(data, type, full) {
-	            	    return '<button type="button" class="btn btn-primary btn-sm addServiceToCat" data-name="'+data.name+'" value="'+data.id+'"><small>Add Service</small></button>' }}
-		]
-	});
-	
+<script th:fragment="services">	
 	$(function () {
+		//cpd dropdown function
+		$(".servicesAddCPDdropdown").change(function(){
+			if((this.value != 'Select')){
+				$(".servicesAddCpdBtn").removeAttr('disabled');
+				if(this.value == 'Category'){
+					$(".servicesAddCpdBtn").attr('title', 'Add Category');
+					$(".servicesAddCpdBtn").attr('value', 'addcategory');
+					$('#servicesCPDtable').DataTable().destroy();
+			        //$('#servicesCPDtable').empty(); // empty in case the columns change
+			        CPDDatatable = $('#servicesCPDtable').DataTable({
+						"sAjaxSource": "/util/getCategoryList",
+						"sAjaxDataProp": "",
+						"asStripeClasses": [ 'strip1', 'strip2', 'strip3', 'strip4', 'strip5' ],
+						"order": [[ 0, "asc" ]],
+						"aoColumns": [
+						      { "mData": "id"},
+					          { "mData": "name" },
+					          { "mData": null,
+					             "bSortable": false,
+					             "mRender": function(data, type, full) {
+					            	    return '<button type="button" class="btn btn-primary btn-sm addServiceToCat" data-name="'+data.name+'" value="'+data.id+'"><small>Add Service</small></button>' 
+					            	    }
+					          }
+						]
+					});
+				}else if(this.value == 'Package'){
+					$(".servicesAddCpdBtn").attr('title', 'Add Package');
+					$(".servicesAddCpdBtn").attr('value', 'addpackage');
+					$('#servicesCPDtable').DataTable().clear().draw();
+				}else if(this.value == 'Deals and Discounts'){
+					$(".servicesAddCpdBtn").attr('title', 'Add Deals and Discounts');
+					$(".servicesAddCpdBtn").attr('value', 'addDd');
+					$('#servicesCPDtable').DataTable().clear().draw();
+				}
+			}else{
+				$(".servicesAddCpdBtn").attr("disabled","disabled");
+				//$(".servicesAddCpdBtn").text("Add");
+				$('#servicesCPDtable').DataTable().clear().draw();
+			}
+		});
+		//---------cpd dropdown function
+		
+		
+		$(".servicesaddCPDmodalSaveBtn").click(function(){
+			//alert($("#servicesaddCPDmodalinput").val());
+			/* if($("#servicesaddCPDmodalinput").val() != ""){
+				$("#cpdAddForm").submit();
+			} */
+		}); 
+		
+		
 		
 		$.post( "/util/getDurationMap", function( data ) {
 			$.each(data, function(key, value){
@@ -134,6 +169,32 @@
 		        $(".getGender").append('<option value="'+ key +'">'+ value +'</option>')
 			})
 		});
+		var CatServicesDatatable;
+		$(".getCategories").change(function(){
+			//alert($(".getCategories").val());
+			if($(".getCategories").val() == ""){
+				$('#servicesServiceTable').DataTable().clear().draw();
+			}else{
+				$('#servicesServiceTable').DataTable().destroy();
+		        //$('#servicesCPDtable').empty(); // empty in case the columns change
+		        CatServicesDatatable = $('#servicesServiceTable').DataTable({
+					"sAjaxSource": "/util/getCatServicesList",
+					"sAjaxDataProp": "",
+					"asStripeClasses": [ 'strip1', 'strip2', 'strip3', 'strip4', 'strip5' ],
+					"order": [[ 0, "asc" ]],
+					"aoColumns": [
+						  { "mData": "category.name"},	
+					      { "mData": "name"},
+				          { "mData": "duration.durationPeriod" },
+				          { "mData": "price"}
+					]
+				});
+			}
+		});
+		
+		$('#servicesServiceTable tbody').on( 'click', 'tr', function () {
+		    console.log( CatServicesDatatable.row( this ).data() );
+		} );
 		
 		var loyaltyPointsMemberShip = new Array();
 		var loyaltyPoints = new Array();
@@ -177,6 +238,27 @@
 			$("#servcesAddtoCatModal").modal({backdrop: "static"});
 			$("#servcesAddtoCatModal").modal('show');
 		});
+		
+		
+		/* $(".addServiceSaveBtn").click(function() {
+			console.log("Save Button Clicked");
+			if($('#getDuration').val() == 'Select Duration'){
+				alert("Please select Duration");
+			}
+			if($('#serviceName').value == ""){
+				alert("Please Enter Service Name");
+			}
+			if($('#price').value == ""){
+				alert("Please Enter Service Price");
+			}
+			if($('.addservicestaffcheckboxInpu')){
+				
+			}
+		}); */
+		
+		
+		
+		
 	});
 	
 </script>

@@ -93,7 +93,7 @@ public class AjaxServiceImpl implements AjaxService{
 	@Override
 	public Map<Integer, String> getAllDurations(){
 		Map<Integer, String> durations= new HashMap<Integer, String>();
-		durations.put(0, "Select Duration");
+		//durations.put(0, "Select Duration");
 		for(Duration duration : durationRepository.findAll()) {
 			durations.put(duration.getId().intValue(), duration.getDurationPeriod()+" ("+duration.getDurationType()+')');
 		}
@@ -108,7 +108,7 @@ public class AjaxServiceImpl implements AjaxService{
 	@Override
 	public Map<Long, String> getCategoryMap() {
 		Map<Long, String> categories= new HashMap<Long, String>();
-		categories.put( 0L, "Select Category");
+		//categories.put( (long) 0, "Select Category");
 		for(Category category : categoryRepository.findAll()) {
 			categories.put(category.getId(), category.getName());
 		}
@@ -133,4 +133,12 @@ public class AjaxServiceImpl implements AjaxService{
 		}
 		return services;
 	}
+
+	@Override
+	public List<com.springbootexample.model.Service> getCatServicesList() {
+		// TODO Auto-generated method stub
+		return serviceRepository.findAll();
+	}
+
+	
 }

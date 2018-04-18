@@ -55,8 +55,7 @@
 							</table>
 							<div class="form-group">
 								<button type="submit"
-									class="btn btn-primary btn-lg pull-right servicesAddCpdBtn"
-									onclick="servicesAddBtn(this.value)" disabled
+									class="btn btn-primary btn-lg pull-right servicesAddCpdBtn" disabled
 									style="width: 50px; height: 50px; padding: 10px 16px; font-size: 18px; line-height: 1.33; border-radius: 25px;"
 									data-toggle="tooltip" data-placement="left">
 									<i class="fa fa-plus"></i>
@@ -94,7 +93,9 @@
 												<div class="col-md-3">
 													<select class="form-control select2 getCategories"
 														style="width: 100%;">
+														<option value="">Select Category</option>
 													</select>
+													
 													<div class="form-group"></div>
 												</div>
 											</div>
@@ -103,56 +104,20 @@
 													class="table table-bordered table-hover">
 													<thead>
 														<tr>
-															<th>Name</th>
+															<th>Category Name</th>
+															<th>Service Name</th>
 															<th>Duration</th>
 															<th>Price</th>
 														</tr>
 													</thead>
-													<tbody>
-														<tr>
-															<td>Trident</td>
-															<td>4</td>
-															<td>300</td>
-														</tr>
-														<tr>
-															<td>Trident</td>
-															<td>5</td>
-															<td>200</td>
-														</tr>
-														<tr>
-															<td>Trident</td>
-															<td>5</td>
-															<td>400</td>
-														</tr>
-														<tr>
-															<td>Trident</td>
-															<td>6</td>
-															<td>100</td>
-														</tr>
-														<tr>
-															<td>Trident</td>
-															<td>7</td>
-															<td>500</td>
-														</tr>
-														<tr>
-															<td>Trident</td>
-															<td>6</td>
-															<td>250</td>
-														</tr>
-														<tr>
-															<td>Gecko</td>
-															<td>1</td>
-															<td>430</td>
-														</tr>
-
-													</tbody>
-													<tfoot>
+													
+													<!--<tfoot>
 														<tr>
 															<th></th>
 															<th>Browser</th>
 															<th></th>
 														</tr>
-													</tfoot>
+													</tfoot>-->
 												</table>
 
 											</div>
@@ -227,7 +192,6 @@
 													<div class="form-group"></div>
 												</div>
 											</div>
-
 										</div>
 									</div>
 								</div>
@@ -248,8 +212,8 @@
 <div class="modal fade" id="servicesAddCPDmodal">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form th:action="@{/admin/services}" th:object="${categoryObject}"
-				method="post">
+			<form th:action="@{/admin/services}"  th:object="${categoryObject}" method="post" >
+				<!--  id="cpdAddForm"  -->
 				<div class="modal-header text-center">
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
@@ -264,7 +228,7 @@
 							<div class="form-group  center-block">
 								<label id="servicesaddCPDmodalLabel"></label> <input
 									type="hidden" name="addMethod" value="addCategory" /> <input
-									type="text" name="name" class="form-control"
+									type="text" name="name" class="form-control" required="required"
 									id="servicesaddCPDmodalinput" />
 							</div>
 						</div>
@@ -321,27 +285,30 @@
 
 											<div class="form-group  center-block">
 												<label>Service Name :</label> <input type="text"
-													name="serviceName" class="form-control"
+													name="serviceName" class="form-control" id = "" required="required"
 													placeholder="Enter Service Name" />
 											</div>
 
 											<div class="form-group">
-												<label>Available For :</label> <select name="availability"
+												<label>Available For :</label> <select name="availability" required="required"
 													class="form-control select2 getGender" style="width: 100%;">
 												</select>
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group">
-												<label>Duration :</label> <select name="duration"
+												<label>Duration :</label> <select name="duration" required="required"
 													class="form-control select2" id="getDuration"
 													style="width: 100%;">
+													<option value="">
+													Select Duration
+													</option>
 												</select>
 											</div>
 
 											<div class="form-group  center-block">
-												<label>Price :</label> <input type="text" name="price"
-													class="form-control" placeholder="0.00" />
+												<label>Price :</label> <input type="number" name="price" required="required"
+													class="form-control price" placeholder="0.00" />
 											</div>
 
 										</div>
@@ -351,7 +318,7 @@
 										<input type="hidden" class="loyalPointsPoints" name="points"/>
 											<div class="form-group  center-block">
 												<label>Loyalty Points :</label> <select
-													class="form-control select2 getMemberships"
+													class="form-control select2 getMemberships" 
 													style="width: 100%;">
 												</select> <input type="number" class="form-control getloyaltyPoints"
 													placeholder="Enter Loyalty Points eg. 10" />
@@ -383,27 +350,7 @@
 															</tr>
 														</thead>
 														<tbody class="loyaltyPointsTable">
-															<!-- <tr>
-												  <td>1</td>
-												  <td>Diamond</td>
-												  <td>11</td>
-												  <td><button type="button" class="btn btn-link" data-toggle="tooltip" title="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
-												  <td><button type="button" class="btn btn-link" data-toggle="tooltip" title="remove"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
-												</tr>
-												<tr>
-												  <td>2</td>
-												  <td>Silver</td>
-												  <td>20</td>
-												  <td><button type="button" class="btn btn-link" data-toggle="tooltip" title="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
-												  <td><button type="button" class="btn btn-link" data-toggle="tooltip" title="remove"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
-												</tr>
-												<tr>
-												  <td>3</td>
-												  <td>Gold</td>
-												  <td>14</td>
-												  <td><button type="button" class="btn btn-link" data-toggle="tooltip" title="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
-												  <td><button type="button" class="btn btn-link" data-toggle="tooltip" title="remove"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
-												</tr> -->
+															
 														</tbody>
 													</table>
 												</div>
@@ -420,7 +367,7 @@
 										<div th:each="staff : ${staffMap}" th:remove="tag">
 											<div class="md-col-3 displayInlineBlock">
 												<div class="checkbox icheck">
-													<label> <input class="addservicestaffcheckboxInput"
+													<label> <input class="addservicestaffcheckboxInput" 
 														type="checkbox" name="staff" th:value="${staff.id}"
 														th:text="' '+${staff.name}">
 													</label>

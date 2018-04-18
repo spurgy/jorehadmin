@@ -6,6 +6,7 @@ import java.util.Map;
 import com.springbootexample.model.Category;
 import com.springbootexample.model.Duration;
 import com.springbootexample.model.Membership;
+import com.springbootexample.model.Service;
 import com.springbootexample.model.Staff;
 
 public interface AjaxService {
@@ -30,4 +31,6 @@ public interface AjaxService {
 	public Map<Integer, String> getGenderMap();
 	
 	public Map<Integer, String> getServiceMap();
+
+	public List<Service> getCatServicesList();
 }

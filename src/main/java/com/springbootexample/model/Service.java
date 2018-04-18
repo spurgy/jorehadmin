@@ -29,6 +29,7 @@ public class Service {
 	@JoinColumn(name="service_category_id")
 	private Category category;
 	
+	
 	@ManyToOne
 	@JoinColumn(name="service_availablefor_id")
 	private Gender gender;

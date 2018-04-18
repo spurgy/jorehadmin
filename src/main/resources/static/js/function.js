@@ -124,7 +124,7 @@ $(function(){
 			$("#servicesAddCPDmodal").modal('show');
 			$("#servicesaddCPDmodalinput").attr('placeholder', 'Enter Deal Name');
 			$("#servicesaddCPDmodalLabel").text('Deal Name :');
-			$("#servicesAddCPDmodalTitle").text('Add Deals and Discount');
+			$("#servicesaddCPDmodalTitle").text('Add Deals and Discount');
 		}
 	});
 })
