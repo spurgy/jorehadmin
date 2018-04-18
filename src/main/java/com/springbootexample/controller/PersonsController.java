@@ -31,7 +31,7 @@ public class PersonsController {
     public String dashboard(Model model) {
 		model.addAttribute("view", "dashboard");
         //return "/base/base";
-        return "/base";
+        return "base";
     }
 	
 	@RequestMapping(value = "/appointment")
