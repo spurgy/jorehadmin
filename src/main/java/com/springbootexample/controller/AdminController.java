@@ -31,7 +31,7 @@ public class AdminController {
     public String handleStaffRequest(HttpServletRequest request, Model model,@ModelAttribute StaffDetails staffDetails) {
 		model.addAttribute("view", "staff");
 		if(request.getMethod().matches("GET")) {
-	        return "/base/base";
+	        return "base";
 		}
 		adminService.saveStaffDetails(staffDetails);
 		return "redirect:/admin/staff";
@@ -44,7 +44,7 @@ public class AdminController {
     		@RequestParam(value="addMethod", required=false) String addMethod) {
 		model.addObject("view", "setup");
 		if(request.getMethod().matches("GET")) {
-			model.setViewName("/base/base");
+			model.setViewName("base");
 			model.addObject("durationObject", new Duration());
 			model.addObject("membershipObject", new Membership());
 			return model;
@@ -65,7 +65,7 @@ public class AdminController {
     		@RequestParam(value="addMethod", required=false) String addMethod) {
 		model.addObject("view", "services");
 		if(request.getMethod().matches("GET")) {
-			model.setViewName("/base/base");
+			model.setViewName("base");
 			model.addObject("serviceDetails", new ServiceDetails());
 			model.addObject("categoryObject", new Category());
 			model.addObject("staffMap", ajaxservice.getAllStaffList());
