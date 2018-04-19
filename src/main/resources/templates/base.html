@@ -11,15 +11,15 @@
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 	name="viewport"></meta>
-<meta th:replace="/csslines"></meta>
+<meta th:replace="csslines"></meta>
 </head>
 <body class="hold-transition skin-blue sidebar-mini" sec:authorize="isAuthenticated()">
 	<!-- wrapper -->
 	<div class="wrapper">
 
-		<div th:replace="/topheader"></div>
+		<div th:replace="topheader"></div>
 
-		<div th:replace="/leftsidenav"></div>
+		<div th:replace="leftsidenav"></div>
 
 		<div th:replace="${ view }"></div>
 
