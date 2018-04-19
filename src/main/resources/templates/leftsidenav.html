@@ -1,0 +1,111 @@
+
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+	<!-- sidebar: style can be found in sidebar.less -->
+	<section class="sidebar" sec:authorize="isAuthenticated()">
+		<!-- Sidebar user panel -->
+		<div class="user-panel">
+			<div class="pull-left image">
+				<img th:src="@{/images/user2-160x160.jpg}" class="img-circle"
+					alt="User Image" />
+			</div>
+			<div class="pull-left info">
+				<p sec:authentication="name"></p>
+				<a href="#" sec:authentication="principal.authorities"><i class="fa fa-circle text-success"></i></a>
+			</div>
+		</div>
+		<!-- search form -->
+		<form action="#" method="get" class="sidebar-form">
+			<div class="input-group">
+				<input type="text" name="q" class="form-control"
+					placeholder="Search..." /> <span class="input-group-btn">
+					<button type="submit" name="search" id="search-btn"
+						class="btn btn-flat">
+						<i class="fa fa-search"></i>
+					</button>
+				</span>
+			</div>
+		</form>
+		<!-- /.search form -->
+		<!-- sidebar menu: : style can be found in sidebar.less -->
+		<ul class="sidebar-menu" data-widget="tree">
+		<li class="header">MAIN NAVIGATION</li>
+		<li>
+			<a href="index2.html" th:href="@{/person/home}">
+				<i class="fa fa-dashboard"></i> <span>Dashboard</span>
+			</a>			
+		</li>
+		<li>
+			<a href="pages/appointment.html" th:href="@{/person/appointment}">
+				<i class="fa fa-calendar"></i> <span>Apponitment</span>
+				<!--<span class="pull-right-container">
+				<small class="label pull-right bg-green">new</small>
+				</span>-->
+			</a>
+		</li>
+		<div sec:authorize="hasAuthority('ADMIN')" th:remove="tag">
+			<li>
+				<a href="pages/services.html" th:href="@{/admin/services}">
+					<i class="fa fa-calendar"></i> <span>Services</span>
+					<!--<span class="pull-right-container">
+					<small class="label pull-right bg-green">new</small>
+					</span>-->
+				</a>
+			</li>
+		</div>
+		<li>
+			<a href="pages/staff_work_status.html" th:href="@{/person/home}">
+				<i class="fa fa-cut"></i> <span>Staff Work Status</span>
+				<!--<span class="pull-right-container">
+				<small class="label pull-right bg-green">new</small>
+				</span>-->
+			</a>
+		</li>
+		<div sec:authorize="hasAuthority('ADMIN')" th:remove="tag">
+			<li>
+				<a href="pages/staff.html" th:href="@{/admin/staff}">
+					<i class="fa fa-users"></i> <span>Staff</span>
+					<!--<span class="pull-right-container">
+					<small class="label pull-right bg-green">new</small>
+					</span>-->
+				</a>
+			</li>
+		</div>
+		<li>
+			<a href="/bill" th:href="@{/person/bill}">
+				<i class="fa fa-file"></i> <span>Bill</span>
+				<!--<span class="pull-right-container">
+				<small class="label pull-right bg-green">new</small>
+				</span>-->
+			</a>
+		</li>
+		<li>
+			<a href="pages/inventory.html" th:href="@{/person/inventory}">
+				<i class="fa fa-archive"></i> <span>Inventory</span>
+				<!--<span class="pull-right-container">
+				<small class="label pull-right bg-green">new</small>
+				</span>-->
+			</a>
+		</li>
+		<li>
+			<a href="pages/inventory.html" th:href="@{/person/home}">
+				<i class="fa fa-cart-arrow-down"></i> <span>Petty Expences</span>
+				<!--<span class="pull-right-container">
+				<small class="label pull-right bg-green">new</small>
+				</span>-->
+			</a>
+		</li>
+		<div sec:authorize="hasAuthority('ADMIN')" th:remove="tag">
+			<li >
+				<a href="pages/setup.html" th:href="@{/admin/setup}">
+					<i class="fa fa-cogs"></i> <span>Setup</span>
+					<!--<span class="pull-right-container">
+					<small class="label pull-right bg-green">new</small>
+					</span>-->
+				</a>
+			</li>
+		</div>
+	</ul>
+	</section>
+	<!-- /.sidebar -->
+</aside>

@@ -11,28 +11,28 @@
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 	name="viewport"></meta>
-<meta th:replace="/base/csslines"></meta>
+<meta th:replace="/csslines"></meta>
 </head>
 <body class="hold-transition skin-blue sidebar-mini" sec:authorize="isAuthenticated()">
 	<!-- wrapper -->
 	<div class="wrapper">
 
-		<div th:replace="/base/topheader"></div>
+		<div th:replace="/topheader"></div>
 
-		<div th:replace="/base/leftsidenav"></div>
+		<div th:replace="/leftsidenav"></div>
 
-		<div th:replace="${'/base/' + view }"></div>
+		<div th:replace="${ view }"></div>
 
-		<div th:replace="/base/footer"></div>
+		<div th:replace="footer"></div>
 
-		<div th:replace="/base/contentslider"></div>
+		<div th:replace="contentslider"></div>
 
 	</div>
 	<!-- ./wrapper -->
-	<div th:replace="/base/jslines"></div>
+	<div th:replace="jslines"></div>
 	
 </body>
-<script th:replace="/base/fragmentScript :: ${view}">
+<script th:replace="fragmentScript :: ${view}">
 
 </script>
 

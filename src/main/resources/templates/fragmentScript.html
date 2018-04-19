@@ -1,0 +1,280 @@
+<script th:fragment="staff">
+
+	staffDatatable = $('#staffTable').DataTable({
+			"sAjaxSource": "/util/getStaffList",
+			"sAjaxDataProp": "",
+			"asStripeClasses": [ 'strip1', 'strip2', 'strip3', 'strip4', 'strip5' ],
+			"order": [[ 0, "asc" ]],
+			"aoColumns": [
+			      { "mData": "id"},
+		          { "mData": "name" },
+				  { "mData": "phoneNumber" },
+				  { "mData": "email" },
+				  { "mData": "salary"}
+			]
+	});
+	
+	$(function () {
+		$(".addStaffBtn").click(function() {
+			$("#staffAddModal").modal({backdrop: "static"});
+			$("#staffAddModal").modal('show');
+		});
+		
+		$(".addStaffSaveBtn").click(function() {
+			$("#StaffForm").submit();
+		});
+		
+		$('#staffTable tbody').on( 'click', 'tr', function () {
+		    console.log( staffDatatable.row( this ).data() );
+		} );
+		
+		$.post( "/util/getDesignationsMap", function( data ) {
+			$.each(data, function(key, value){
+		        $("#staffDesignations").append('<option value="'+ key +'">'+ value +'</option>')
+			})
+		});
+		
+		$( ".staffEmail" ).change(function() {
+			$.post( "/util/checkEmail", { email: this.value })
+			  .done(function( data ) {
+				  if(data.status > 0) {
+					  alert("Email exists already. Please enter a new Email.");
+					  $(".staffEmail").val("");
+				  }
+			});
+		});
+	});
+</script>
+<script th:fragment="setup">
+	
+	durationDatatable = $('#setupDurationTable').DataTable({
+		"sAjaxSource": "/util/getDurationList",
+		"sAjaxDataProp": "",
+		"asStripeClasses": [ 'strip1', 'strip2', 'strip3', 'strip4', 'strip5' ],
+		"order": [[ 0, "asc" ]],
+		"aoColumns": [
+		      { "mData": "id"},
+	          { "mData": "durationPeriod" },
+			  { "mData": "durationType" }
+		]
+	});
+	
+	membershipDatatable = $('#setupMembershipTable').DataTable({
+		"sAjaxSource": "/util/getMembershipList",
+		"sAjaxDataProp": "",
+		"asStripeClasses": [ 'strip1', 'strip2', 'strip3', 'strip4', 'strip5' ],
+		"order": [[ 0, "asc" ]],
+		"aoColumns": [
+		      { "mData": "id"},
+	          { "mData": "name" },
+			  { "mData": "duration.durationPeriod" },
+			  { "mData": "duration.durationType" },
+			  { "mData": "price" }
+		]
+	});
+	
+	$(function () {
+		$(".setupModalView").click(function() {
+			if(this.value == "addMembership"){
+				$("#setupAddMembershipModal").modal({backdrop: "static"});
+				$("#setupAddMembershipModal").modal('show');
+			}
+			if(this.value == "addDuration"){
+				$("#setupAddDurationModal").modal({backdrop: "static"});
+				$("#setupAddDurationModal").modal('show');
+			}
+		});
+		
+		$.post( "/util/getDurationMap", function( data ) {
+			$.each(data, function(key, value){
+		        $("#setupAddMembershipModalDurationDrpdwn").append('<option value="'+ key +'">'+ value +'</option>')
+			})
+		});
+	});
+</script>
+<script th:fragment="services">	
+	$(function () {
+		//cpd dropdown function
+		$(".servicesAddCPDdropdown").change(function(){
+			if((this.value != 'Select')){
+				$(".servicesAddCpdBtn").removeAttr('disabled');
+				if(this.value == 'Category'){
+					$(".servicesAddCpdBtn").attr('title', 'Add Category');
+					$(".servicesAddCpdBtn").attr('value', 'addcategory');
+					$('#servicesCPDtable').DataTable().destroy();
+			        //$('#servicesCPDtable').empty(); // empty in case the columns change
+			        CPDDatatable = $('#servicesCPDtable').DataTable({
+						"sAjaxSource": "/util/getCategoryList",
+						"sAjaxDataProp": "",
+						"asStripeClasses": [ 'strip1', 'strip2', 'strip3', 'strip4', 'strip5' ],
+						"order": [[ 0, "asc" ]],
+						"aoColumns": [
+						      { "mData": "id"},
+					          { "mData": "name" },
+					          { "mData": null,
+					             "bSortable": false,
+					             "mRender": function(data, type, full) {
+					            	    return '<button type="button" class="btn btn-primary btn-sm addServiceToCat" data-name="'+data.name+'" value="'+data.id+'"><small>Add Service</small></button>' 
+					            	    }
+					          }
+						]
+					});
+				}else if(this.value == 'Package'){
+					$(".servicesAddCpdBtn").attr('title', 'Add Package');
+					$(".servicesAddCpdBtn").attr('value', 'addpackage');
+					$('#servicesCPDtable').DataTable().clear().draw();
+				}else if(this.value == 'Deals and Discounts'){
+					$(".servicesAddCpdBtn").attr('title', 'Add Deals and Discounts');
+					$(".servicesAddCpdBtn").attr('value', 'addDd');
+					$('#servicesCPDtable').DataTable().clear().draw();
+				}
+			}else{
+				$(".servicesAddCpdBtn").attr("disabled","disabled");
+				//$(".servicesAddCpdBtn").text("Add");
+				$('#servicesCPDtable').DataTable().clear().draw();
+			}
+		});
+		//---------cpd dropdown function
+		
+		
+		$(".servicesaddCPDmodalSaveBtn").click(function(){
+			//alert($("#servicesaddCPDmodalinput").val());
+			/* if($("#servicesaddCPDmodalinput").val() != ""){
+				$("#cpdAddForm").submit();
+			} */
+		}); 
+		
+		
+		
+		$.post( "/util/getDurationMap", function( data ) {
+			$.each(data, function(key, value){
+		        $("#getDuration").append('<option value="'+ key +'">'+ value +'</option>')
+			})
+		});
+		
+		$.post( "/util/getMembershipMap", function( data ) {
+			$.each(data, function(key, value){
+		        $(".getMemberships").append('<option value="'+ key +'">'+ value +'</option>')
+			})
+		});
+		
+		$.post( "/util/getCategoryMap", function( data ) {
+			$.each(data, function(key, value){
+		        $(".getCategories").append('<option value="'+ key +'">'+ value +'</option>')
+			})
+		});
+		
+		$.post( "/util/getGenderMap", function( data ) {
+			$.each(data, function(key, value){
+		        $(".getGender").append('<option value="'+ key +'">'+ value +'</option>')
+			})
+		});
+		var CatServicesDatatable;
+		$(".getCategories").change(function(){
+			//alert($(".getCategories").val());
+			if($(".getCategories").val() == ""){
+				$('#servicesServiceTable').DataTable().clear().draw();
+			}else{
+				$('#servicesServiceTable').DataTable().destroy();
+		        //$('#servicesCPDtable').empty(); // empty in case the columns change
+		        CatServicesDatatable = $('#servicesServiceTable').DataTable({
+					"sAjaxSource": "/util/getCatServicesList",
+					"sAjaxDataProp": "",
+					"asStripeClasses": [ 'strip1', 'strip2', 'strip3', 'strip4', 'strip5' ],
+					"order": [[ 0, "asc" ]],
+					"aoColumns": [
+						  { "mData": "category.name"},	
+					      { "mData": "name"},
+				          { "mData": "duration.durationPeriod" },
+				          { "mData": "price"}
+					]
+				});
+			}
+		});
+		
+		$('#servicesServiceTable tbody').on( 'click', 'tr', function () {
+		    console.log( CatServicesDatatable.row( this ).data() );
+		} );
+		
+		var loyaltyPointsMemberShip = new Array();
+		var loyaltyPoints = new Array();
+		
+		$("#addLoyaltyPoints").click(function() {
+			$getloyaltyPoints = $('.getloyaltyPoints');
+			$getMemberships = $('.getMemberships');
+			if($getloyaltyPoints.val() != "" && $getMemberships.val() != "" && $getMemberships.val() != 0){
+				$('.loyaltyPointsTable').append(
+					'<tr id="'+$getMemberships.val()+'"><td>'+$getMemberships.val()+'</td><td>'+$getMemberships.find("option:selected").text()+'</td><td>'+$getloyaltyPoints.val()+'</td><td><button type="button" class="btn btn-link btnDeleteloyaltyPointsTableRow" data-toggle="tooltip" data-id="'+$getMemberships.val()+'" title="remove"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td></tr>'
+				);
+				loyaltyPointsMemberShip.push($getMemberships.val());
+				loyaltyPoints.push($getloyaltyPoints.val());
+				$('.loyalPointsMembership').val(loyaltyPointsMemberShip);
+				$('.loyalPointsPoints').val(loyaltyPoints);
+			} else {
+				alert("Please enter the valid Data");
+			}
+			cleanLoyaltyPoints();
+		});
+		
+		$(document).on("click", ".btnDeleteloyaltyPointsTableRow", function() {
+			var index = loyaltyPointsMemberShip.indexOf($(this).data('id').toString());
+			loyaltyPointsMemberShip.splice(index,1);
+			loyaltyPoints.splice(index,1);
+			$('.loyalPointsMembership').val(loyaltyPointsMemberShip);
+			$('.loyalPointsPoints').val(loyaltyPoints);
+			var tr = '#'+$(this).data('id');
+			$(tr).remove();
+		});
+		
+		function cleanLoyaltyPoints(){
+			$('.getloyaltyPoints').val("");
+			$('.getMemberships').val("0").change();
+		}
+
+		$(document).on("click", ".addServiceToCat", function() {
+			$(".serviceCatId").val($(this).val());
+			cleanLoyaltyPoints();
+			$('.loyaltyPointsTable').html("");
+			$("#servcesAddtoCatModal").modal({backdrop: "static"});
+			$("#servcesAddtoCatModal").modal('show');
+		});
+		
+		
+		/* $(".addServiceSaveBtn").click(function() {
+			console.log("Save Button Clicked");
+			if($('#getDuration').val() == 'Select Duration'){
+				alert("Please select Duration");
+			}
+			if($('#serviceName').value == ""){
+				alert("Please Enter Service Name");
+			}
+			if($('#price').value == ""){
+				alert("Please Enter Service Price");
+			}
+			if($('.addservicestaffcheckboxInpu')){
+				
+			}
+		}); */
+		
+		
+		
+		
+	});
+	
+</script>
+<script th:fragment="appointment">
+	$(function () {
+		
+		$.post( "/util/getServiceMap", function( data ) {
+			$.each(data, function(key, value){
+		        $(".getService").append('<option value="'+ key +'">'+ value +'</option>')
+			})
+		});
+		
+		$.post( "/util/getStaffMap", function( data ) {
+			$.each(data, function(key, value){
+		        $(".getStaff").append('<option value="'+ key +'">'+ value +'</option>')
+			})
+		});
+	});
+</script>

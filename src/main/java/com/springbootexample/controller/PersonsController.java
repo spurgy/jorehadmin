@@ -40,7 +40,7 @@ public class PersonsController {
     		@RequestParam(value="addMethod", required=false) String addMethod) {
 		model.addObject("view", "appointment");
 		if(request.getMethod().matches("GET")) {
-			model.setViewName("/base/base");
+			model.setViewName("/base");
 			model.addObject("appointment", new Appointment());
 			return model;
 		}
@@ -53,13 +53,13 @@ public class PersonsController {
 	@RequestMapping(value = "/bill")
     public String bill(Model model) {
 		model.addAttribute("view", "bill");
-        return "/base/base";
+        return "/base";
     }
 	
 	@RequestMapping(value = "/inventory")
     public String inventory(Model model) {
 		model.addAttribute("view", "inventory");
-        return "/base/base";
+        return "/base";
     }
  
     @RequestMapping(value = "/delete")
