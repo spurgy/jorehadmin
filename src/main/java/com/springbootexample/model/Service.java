@@ -12,13 +12,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "service")
 public class Service {
+	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="myapp.service_service_id_seq")
+    @SequenceGenerator(name="myapp.service_service_id_seq", sequenceName="myapp.service_service_id_seq", allocationSize=1)
 	@Column(name="service_id")
 	private Long id;
 	
@@ -38,7 +41,7 @@ public class Service {
 	@JoinColumn(name="service_duration_id")
 	private Duration duration;
 	
-	@Column(name="service_price")
+	@Column(name="	")
 	private double price;
 	
 	@ManyToMany(cascade = CascadeType.ALL)

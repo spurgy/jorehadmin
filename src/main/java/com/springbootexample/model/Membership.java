@@ -7,13 +7,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "membership")
 public class Membership extends TimeStampClass {
+	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="myapp.membership_membership_id_seq")
+    @SequenceGenerator(name="myapp.membership_membership_id_seq", sequenceName="myapp.membership_membership_id_seq", allocationSize=1)
 	@Column(name="membership_id")
 	private Long id;
 	

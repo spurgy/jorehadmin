@@ -7,13 +7,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "loyalty_points")
 public class LoyaltyPoints {
+	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="myapp.loyalty_points_loyalty_id_seq")
+    @SequenceGenerator(name="myapp.loyalty_points_loyalty_id_seq", sequenceName="myapp.loyalty_points_loyalty_id_seq", allocationSize=1)
 	@Column(name="loyalty_id")
 	private Long id;
 	

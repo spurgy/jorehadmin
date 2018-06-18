@@ -5,13 +5,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "services_category")
 public class Category extends TimeStampClass {
+	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="myapp.services_category_services_category_id_seq")
+    @SequenceGenerator(name="myapp.services_category_services_category_id_seq", sequenceName="myapp.services_category_services_category_id_seq", allocationSize=1)
 	@Column(name="services_category_id")
 	private Long id;
 	
